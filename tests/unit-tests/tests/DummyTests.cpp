@@ -2,10 +2,10 @@
 #include "gtest/gtest.h"
 
 namespace Logging {
+	using namespace std;
 
-    using namespace std;
+	TEST(DummyTests, WriteMessage) {
+		std::cout << "Dummy message" << std::endl;
+	}
 
-    Test(DummyTests, WriteMessage) {
-        std::cout << "Dummy message" << std::endl;
-    }
 }

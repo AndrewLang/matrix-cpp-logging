@@ -46,5 +46,3 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 	PUBLIC_HEADER "${HeaderFiles}"
 	OUTPUT_NAME "logging"
 )
-
-add_subdirectory (logging)

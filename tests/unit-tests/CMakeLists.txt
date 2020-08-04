@@ -19,7 +19,7 @@ set (SourceFiles
 	pch.cpp
 	main.cpp
 	
-	tests/Dummytests.cpp
+	tests/DummyTests.cpp
 )
 
 
@@ -43,7 +43,7 @@ add_executable (${PROJECT_NAME} ${HeaderFiles} ${SourceFiles})
 
 # Include sub-projects.
 
-target_link_libraries(${PROJECT_NAME} PRIVATE gtest_main pxi-resource-manager-common)
+target_link_libraries(${PROJECT_NAME} PRIVATE gtest_main logging)
 
 
 if(WIN32)

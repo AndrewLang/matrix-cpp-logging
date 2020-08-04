@@ -1,7 +1,9 @@
 
 # header files
 SET(HeaderFiles 
-	pch.h	
+    pch.h	
+    
+    include/logger.h
 )
 
 # source files
@@ -10,10 +12,10 @@ SET(SourceFiles
     
 )
 
-if(WIN32)
-    list(APPEND SourceFiles )
-    list(APPEND HeaderFiles )
-else ()
-    list(APPEND SourceFiles )
-    list(APPEND HeaderFiles )
-elseif()
+# if(WIN32)
+#     list(APPEND SourceFiles )
+#     list(APPEND HeaderFiles )
+# else ()
+#     list(APPEND SourceFiles )
+#     list(APPEND HeaderFiles )
+# elseif()
