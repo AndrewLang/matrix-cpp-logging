@@ -12,14 +12,34 @@ include_directories(
 set (HeaderFiles 
 	pch.h
 	main.h
-		
+
+	include/Circle.h
+	include/Rectangle.h
+	include/Shape.h
+	Include/ShapeContainer.h
+
 )
 
 set (SourceFiles 
 	pch.cpp
 	main.cpp
 	
+	src/Circle.cpp
+	src/Rectangle.cpp
+	src/Shape.cpp
+	src/ShapeContainer.cpp
+
 	tests/DummyTests.cpp
+
+	
+	tests/common/ArgumentNullExceptionTests.cpp
+	tests/common/GuardTests.cpp
+	tests/common/ObjectMapTests.cpp
+	tests/common/MapExtensionsTests.cpp
+	tests/common/StopwatchTests.cpp
+	tests/common/StringExtensionsTests.cpp
+	tests/common/TextFormatterTests.cpp
+	tests/common/VectorExtensionsTests.cpp
 )
 
 
