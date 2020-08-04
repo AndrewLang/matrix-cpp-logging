@@ -40,6 +40,14 @@ set (SourceFiles
 	tests/common/StringExtensionsTests.cpp
 	tests/common/TextFormatterTests.cpp
 	tests/common/VectorExtensionsTests.cpp
+
+	tests/logging/ConsoleLoggerProviderTests.cpp
+	tests/logging/ConsoleLoggerTests.cpp
+	tests/logging/InternalLoggerTests.cpp
+	tests/logging/LoggerFactoryTests.cpp
+	tests/logging/LogLevelConverterTests.cpp
+	tests/logging/VsOutputLogger.cpp
+	tests/logging/VsOutputLoggerProviderTests.cpp
 )
 
 

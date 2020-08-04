@@ -3,8 +3,6 @@
 SET(HeaderFiles 
     pch.h	
     
-    include/logger.h
-
     include/common/ArgumentNullException.h
 	include/common/BaseException.h
 	include/common/FileLoadException.h
@@ -18,6 +16,20 @@ SET(HeaderFiles
 	include/common/StringExtensions.h	
 	include/common/TextFormatter.h
 	include/common/VectorExtensions.h
+
+	include/logging/ConsoleLogger.h
+	include/logging/ConsoleLoggerProvider.h
+	include/logging/ILogger.h
+	include/logging/ILoggerFactory.h
+	include/logging/ILoggerProvider.h
+	include/logging/InternalLogger.h
+	include/logging/LoggerBase.h
+	include/logging/LoggerFactory.h
+	include/logging/LogLevelConverter.h
+	include/logging/LogMessageName.h
+	include/logging/VsOutput.h
+	include/logging/VsOutputLogger.h
+	include/logging/VsOutputLoggerProvider.h
 )
 
 # source files
@@ -33,6 +45,16 @@ SET(SourceFiles
 	src/common/Stopwatch.cpp
 	src/common/StringExtensions.cpp
 	src/common/TextFormatter.cpp
+
+	src/logging/ConsoleLogger.cpp
+	src/logging/ConsoleLoggerProvider.cpp
+	src/logging/InternalLogger.cpp
+	src/logging/LoggerBase.cpp
+	src/logging/LoggerFactory.cpp
+	src/logging/LogLevelConverter.cpp
+	src/logging/VsOutput.cpp
+	src/logging/VsOutputLogger.cpp
+	src/logging/VsOutputLoggerProvider.cpp
 )
 
 # if(WIN32)
