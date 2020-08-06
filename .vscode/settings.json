@@ -1,6 +1,20 @@
 {
     "files.associations": {
-        "vector": "cpp"
+        "vector": "cpp",
+        "future": "cpp",
+        "locale": "cpp",
+        "memory": "cpp",
+        "ostream": "cpp",
+        "regex": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "xstddef": "cpp",
+        "xstring": "cpp",
+        "xxatomic": "cpp",
+        "*.rh": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "testMate.cpp.log.logSentry": "disable_3"

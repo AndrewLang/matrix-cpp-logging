@@ -46,6 +46,7 @@ set (SourceFiles
 	tests/logging/InternalLoggerTests.cpp
 	tests/logging/LoggerFactoryTests.cpp
 	tests/logging/LogLevelConverterTests.cpp
+	tests/logging/LogLevelTests.cpp
 	tests/logging/VsOutputLogger.cpp
 	tests/logging/VsOutputLoggerProviderTests.cpp
 )
