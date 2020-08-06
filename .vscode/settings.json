@@ -2,5 +2,6 @@
     "files.associations": {
         "vector": "cpp"
     },
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "testMate.cpp.log.logSentry": "disable_3"
 }
