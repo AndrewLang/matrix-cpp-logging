@@ -7,7 +7,13 @@ namespace Logging
     private:
         /* data */
     public:
-        static const LogLevel Debug; // = LogLevel("", 100);
+        static const LogLevel All;
+        static const LogLevel Debug;
+        static const LogLevel Info;
+        static const LogLevel Warn;
+        static const LogLevel Error;
+        static const LogLevel Fatal;
+        static const LogLevel None;
     };
 
 }

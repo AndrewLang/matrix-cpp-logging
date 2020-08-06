@@ -10,4 +10,5 @@ namespace Logging
         EXPECT_EQ("jasoom", level.getName());
         EXPECT_EQ(99, level.getValue());
     }
+    
 }

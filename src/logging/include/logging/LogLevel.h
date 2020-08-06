@@ -8,7 +8,7 @@ namespace Logging
         std::string mName;
         int mValue;
 
-    public:
+    public:    
         LogLevel(const std::string name, const int value);
 
 		LogLevel() = delete;
