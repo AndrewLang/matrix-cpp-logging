@@ -134,7 +134,7 @@ namespace Logging
 		ASSERT_EQ(3, actual[1]);
 		ASSERT_EQ(5, actual[2]);
 
-		actual = Vectors::range(source, source.size() + 1, 3);
+		actual = Vectors::range(source, static_cast<int>(source.size() + 1), 3);
 		ASSERT_EQ(0, actual.size());
 
 		actual = Vectors::range(source, 3, 4);

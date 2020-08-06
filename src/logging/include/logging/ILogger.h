@@ -232,8 +232,7 @@ namespace Logging
 
 		template< typename ... Args >
 		std::string buildMessage(N name, Args ... args)
-		{
-			
+		{			
 			if (Strings::isNullOrEmpty(name.getName()))
 			{
 				return Strings::isNullOrEmpty(mGroupName) ? format("",args...) : Strings::Tab + format("", args...);
