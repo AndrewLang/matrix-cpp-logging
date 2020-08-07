@@ -12,7 +12,7 @@ namespace Logging
 {
 	typedef LogMessageName N;
 
-	enum class LogLevel
+	enum class LogLevelEnum
 	{
 		Trace,
 		Debug,
@@ -28,9 +28,9 @@ namespace Logging
 	public:
 		std::string name;
 
-		virtual bool isEnabled(LogLevel level) = 0;
+		virtual bool isEnabled(LogLevelEnum level) = 0;
 
-		virtual ILogger& log(LogLevel level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter()) = 0;
+		virtual ILogger& log(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter()) = 0;
 
 		virtual ILogger& debug(std::string message) = 0;
 

@@ -4,13 +4,13 @@ namespace Logging
 {
 	LogLevelConverter::LogLevelConverter()
 	{
-		mValues[LogLevel::Trace] = "Trace";
-		mValues[LogLevel::Debug] = "Debug";
-		mValues[LogLevel::Information] = "Information";
-		mValues[LogLevel::Warning] = "Warning";
-		mValues[LogLevel::Error] = "Error";
-		mValues[LogLevel::Fatal] = "Fatal";
-		mValues[LogLevel::None] = "None";
+		mValues[LogLevelEnum::Trace] = "Trace";
+		mValues[LogLevelEnum::Debug] = "Debug";
+		mValues[LogLevelEnum::Information] = "Information";
+		mValues[LogLevelEnum::Warning] = "Warning";
+		mValues[LogLevelEnum::Error] = "Error";
+		mValues[LogLevelEnum::Fatal] = "Fatal";
+		mValues[LogLevelEnum::None] = "None";
 	}
 
 	LogLevelConverter::~LogLevelConverter()
@@ -18,7 +18,7 @@ namespace Logging
 		mValues.clear();
 	}
 
-	std::string LogLevelConverter::toString(LogLevel level)
+	std::string LogLevelConverter::toString(LogLevelEnum level)
 	{
 		auto iterator = mValues.find(level);
 		if (iterator != mValues.end())

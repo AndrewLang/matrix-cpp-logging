@@ -2,7 +2,8 @@
 
 namespace Logging
 {
-    LogMessage::LogMessage(/* args */)
+    LogMessage::LogMessage(const LogLevel & level, const std::string & name, const std::string & message, const std::string & timestamp)
+        : mLevel(level), mName(name), mMessage(message), mTimestamp(timestamp)
     {
     }
 
@@ -10,4 +11,8 @@ namespace Logging
     {
     }
 
+    std::string LogMessage::getName()
+    {
+        return mName;
+    }
 } // namespace Logging

@@ -11,6 +11,8 @@ namespace Logging
     public:    
         LogLevel(const std::string name, const int value);
 
+        LogLevel(const LogLevel& level);
+        
 		LogLevel() = delete;
 
         ~LogLevel();

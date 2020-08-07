@@ -7,6 +7,12 @@ namespace Logging
 	{
 	}
 
+	LogLevel::LogLevel(const LogLevel& level) 
+	{
+		mName = level.mName;
+		mValue = level.mValue;
+	}
+
 	LogLevel::~LogLevel()
 	{
 	}

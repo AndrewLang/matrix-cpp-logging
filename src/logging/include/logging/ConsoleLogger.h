@@ -6,7 +6,7 @@ namespace Logging
 	class ConsoleLogger :public LoggerBase
 	{
 	public:
-		ILogger& log(LogLevel level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter) override;
+		ILogger& log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter) override;
 
 		ConsoleLogger() = delete;
 

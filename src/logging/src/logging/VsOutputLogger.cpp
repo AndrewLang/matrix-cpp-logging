@@ -19,7 +19,7 @@ namespace Logging
 	{
 	}
 
-	ILogger & VsOutputLogger::log(LogLevel level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	ILogger & VsOutputLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
 	{
 		auto text = StringExtensions::wrapBySquare(name) + SPACE + format(level, message, eveintId, exception, formatter);
 		

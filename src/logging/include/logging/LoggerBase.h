@@ -12,7 +12,7 @@ namespace Logging
 
 		~LoggerBase();
 
-		bool isEnabled(LogLevel level) override;
+		bool isEnabled(LogLevelEnum level) override;
 
 		ILogger& debug(std::string message) override;
 
@@ -27,7 +27,7 @@ namespace Logging
 		ILogger& fatal(std::string message) override;
 
 	protected:
-		std::string format(LogLevel level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter());
+		std::string format(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter());
 
 		LogLevelConverter mConverter;
 

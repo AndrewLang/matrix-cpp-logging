@@ -14,50 +14,50 @@ namespace Logging
 	{
 	}
 
-	bool Logging::LoggerBase::isEnabled(LogLevel level)
+	bool Logging::LoggerBase::isEnabled(LogLevelEnum level)
 	{
 		return true;
 	}
 
 	ILogger & LoggerBase::debug(std::string message)
 	{
-		log(LogLevel::Debug, message);
+		log(LogLevelEnum::Debug, message);
 		return *this;
 	}
 
 	ILogger & LoggerBase::trace(std::string message)
 	{
-		log(LogLevel::Trace, message);
+		log(LogLevelEnum::Trace, message);
 		return *this;
 	}
 
 	ILogger & LoggerBase::info(std::string message)
 	{
-		log(LogLevel::Information, message);
+		log(LogLevelEnum::Information, message);
 		return *this;
 	}
 
 	ILogger & LoggerBase::warning(std::string message)
 	{
-		log(LogLevel::Warning, message);
+		log(LogLevelEnum::Warning, message);
 		return *this;
 	}
 
 	ILogger & LoggerBase::error(std::string message)
 	{
-		log(LogLevel::Error, message);
+		log(LogLevelEnum::Error, message);
 		return *this;
 	}
 
 	ILogger & LoggerBase::fatal(std::string message)
 	{
-		log(LogLevel::Fatal, message);
+		log(LogLevelEnum::Fatal, message);
 		return *this;
 	}
 	
-	std::string LoggerBase::format(LogLevel level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	std::string LoggerBase::format(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
 	{
-		string levelText = level == LogLevel::None ?
+		string levelText = level == LogLevelEnum::None ?
 			"" : wrapText(mConverter.toString(level));
 
 		if (exception)

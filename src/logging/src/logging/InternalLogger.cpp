@@ -15,7 +15,7 @@ namespace Logging
 		mLoggers.clear();
 	}
 
-	ILogger & InternalLogger::log(LogLevel level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	ILogger & InternalLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
 	{
 		std::vector<std::exception> exceptions;
 		for (auto logger : mLoggers)
@@ -38,7 +38,7 @@ namespace Logging
 		return *this;
 	}
 
-	bool InternalLogger::isEnabled(LogLevel level)
+	bool InternalLogger::isEnabled(LogLevelEnum level)
 	{
 		for (auto logger : mLoggers)
 		{
@@ -52,38 +52,38 @@ namespace Logging
 
 	ILogger & InternalLogger::debug(std::string message)
 	{
-		log(LogLevel::Debug, message);
+		log(LogLevelEnum::Debug, message);
 
 		return *this;
 	}
 
 	ILogger & InternalLogger::trace(std::string message)
 	{
-		log(LogLevel::Trace, message);
+		log(LogLevelEnum::Trace, message);
 		return *this;
 	}
 
 	ILogger & InternalLogger::info(std::string message)
 	{
-		log(LogLevel::Information, message);
+		log(LogLevelEnum::Information, message);
 		return *this;
 	}
 
 	ILogger & InternalLogger::warning(std::string message)
 	{
-		log(LogLevel::Warning, message);
+		log(LogLevelEnum::Warning, message);
 		return *this;
 	}
 
 	ILogger & InternalLogger::error(std::string message)
 	{
-		log(LogLevel::Error, message);
+		log(LogLevelEnum::Error, message);
 		return *this;
 	}
 
 	ILogger & InternalLogger::fatal(std::string message)
 	{
-		log(LogLevel::Fatal, message);
+		log(LogLevelEnum::Fatal, message);
 		return *this;
 	}
 

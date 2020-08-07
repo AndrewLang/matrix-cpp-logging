@@ -13,11 +13,11 @@ namespace Logging
 
 		~LogLevelConverter();
 
-		std::string toString(LogLevel level);
+		std::string toString(LogLevelEnum level);
 
 	private:	
 
-		std::map<LogLevel, std::string> mValues;
+		std::map<LogLevelEnum, std::string> mValues;
 	};
 
 }

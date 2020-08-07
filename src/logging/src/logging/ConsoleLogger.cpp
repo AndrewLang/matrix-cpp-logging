@@ -28,7 +28,7 @@ namespace Logging
 		
 	}
 	
-	ILogger & ConsoleLogger::log(LogLevel level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	ILogger & ConsoleLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
 	{
 		auto text = format(level, message, eveintId, exception, formatter);
 
