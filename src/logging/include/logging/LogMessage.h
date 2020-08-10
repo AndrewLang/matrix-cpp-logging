@@ -1,4 +1,3 @@
-
 #pragma once
 #include <string>
 
@@ -12,15 +11,19 @@ namespace Logging
         std::string mName;
         std::string mMessage;
         std::string mTimestamp;
-        LogLevel mLevel;
+        std::shared_ptr<LogLevel> mLevel;
         int mIndent;
 
     public:
-        LogMessage(const LogLevel& level, const std::string& name, const std::string& message, const std::string& timestamp);
+        LogMessage(std::shared_ptr<LogLevel> level, const std::string& name, const std::string& message, const std::string& timestamp, const int intent = 0);
         LogMessage() = delete;
         ~LogMessage();
 
         std::string getName();
+        std::string getMessage();
+        std::string getTimmestamp();
+        std::shared_ptr<LogLevel> getLevel();
+        int getIndent();
     };
 
 } // namespace Logging

@@ -26,4 +26,11 @@ namespace Logging
 	{
 		return mValue;
 	}
+
+	LogLevel & LogLevel::setAlias(const std::string value)
+	{
+		mAlias = value;
+		return *this;
+	}
+
 } // namespace Logging

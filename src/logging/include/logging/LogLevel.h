@@ -1,27 +1,29 @@
+#pragma once
 #include <string>
 
 namespace Logging
 {
-    class LogLevel
-    {
-    private:        
-        std::string mName;
-        int mValue;
+	class LogLevel
+	{
+	private:
+		std::string mName;
+		std::string mAlias;
+		int mValue;
 
-    public:    
-        LogLevel(const std::string name, const int value);
+	public:
+		LogLevel(const std::string name, const int value);
 
-        LogLevel(const LogLevel& level);
-        
+		LogLevel(const LogLevel& level);
+
 		LogLevel() = delete;
 
-        ~LogLevel();
+		~LogLevel();
 
-        std::string getName();
+		std::string getName();
 
-        int getValue();
-    };
+		int getValue();
 
-    
+		LogLevel& setAlias(const std::string value);
+	};
 
 } // namespace Logging

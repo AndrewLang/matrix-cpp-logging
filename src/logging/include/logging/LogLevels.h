@@ -1,3 +1,6 @@
+#pragma once
+
+#include <map>
 #include "LogLevel.h"
 
 namespace Logging
@@ -5,22 +8,43 @@ namespace Logging
 	class LogLevels
 	{
 	private:
+		static constexpr const char* All = "All";
+		static constexpr const char* Debug = "Debug";
+		static constexpr const char* Info = "Info";
+		static constexpr const char* Warn = "Warn";
+		static constexpr const char* Error = "Error";
+		static constexpr const char* Fatal = "Fatal";
+		static constexpr const char* None = "None";
+		
+		std::map<std::string, std::shared_ptr<LogLevel>> mLevels;
 
+		
+		void initialize();
 	public:
-		static const std::shared_ptr<LogLevel> All;
-		static const std::shared_ptr<LogLevel> Debug;
-		static const std::shared_ptr<LogLevel> Info;
-		static const std::shared_ptr<LogLevel> Warn;
-		static const std::shared_ptr<LogLevel> Error;
-		static const std::shared_ptr<LogLevel> Fatal;
-		static const std::shared_ptr<LogLevel> None;
-	};
 
-	const std::shared_ptr<LogLevel> LogLevels::All = std::make_shared<LogLevel>("All", 0);
-	const std::shared_ptr<LogLevel> LogLevels::Debug = std::make_shared<LogLevel>("Debug", 100); 
-	const std::shared_ptr<LogLevel> LogLevels::Info = std::make_shared<LogLevel>("Info", 200);
-	const std::shared_ptr<LogLevel> LogLevels::Warn = std::make_shared<LogLevel>("Warn", 300);
-	const std::shared_ptr<LogLevel> LogLevels::Error = std::make_shared<LogLevel>("Error", 400);
-	const std::shared_ptr<LogLevel> LogLevels::Fatal = std::make_shared<LogLevel>("Fatal", 500);
-	const std::shared_ptr<LogLevel> LogLevels::None = std::make_shared<LogLevel>("None", 99999);
+		LogLevels();
+
+		LogLevels(LogLevels const& instance) = delete;
+
+		LogLevels& operator = (LogLevels  const& instance) = delete;
+		
+		~LogLevels();
+
+		static std::shared_ptr<LogLevels> Default()
+		{
+			static std::shared_ptr<LogLevels> instance = std::make_shared<LogLevels>();
+			// (new LogLevels());
+			return instance;
+		}
+
+		std::shared_ptr<LogLevel> all();
+		std::shared_ptr<LogLevel> debug();
+		std::shared_ptr<LogLevel> info();
+		std::shared_ptr<LogLevel> warn();
+		std::shared_ptr<LogLevel> error();
+		std::shared_ptr<LogLevel> fatal();
+		std::shared_ptr<LogLevel> none();
+
+		LogLevels& add(const std::string name, const int value);
+	};
 }
