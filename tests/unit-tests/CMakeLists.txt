@@ -16,7 +16,8 @@ set (HeaderFiles
 	include/Circle.h
 	include/Rectangle.h
 	include/Shape.h
-	Include/ShapeContainer.h
+	include/ShapeContainer.h
+	include/Messages.h
 
 )
 
@@ -28,6 +29,7 @@ set (SourceFiles
 	src/Rectangle.cpp
 	src/Shape.cpp
 	src/ShapeContainer.cpp
+	src/Messages.cpp
 
 	tests/DummyTests.cpp
 
@@ -50,6 +52,7 @@ set (SourceFiles
 	tests/logging/LogLevelsTests.cpp
 	tests/logging/LogMessageTests.cpp
 	tests/logging/LogNameLayoutTests.cpp
+	tests/logging/LogTimestampLayoutTests.cpp
 	tests/logging/VsOutputLogger.cpp
 	tests/logging/VsOutputLoggerProviderTests.cpp
 )

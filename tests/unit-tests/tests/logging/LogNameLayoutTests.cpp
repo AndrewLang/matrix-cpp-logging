@@ -3,21 +3,18 @@
 #include "gtest/gtest.h"
 #include "logging/LogNameLayout.h"
 #include "logging/LogMessage.h"
+#include "Messages.h"
 
 namespace Logging
 {
-	LogMessage DebugMessage()
-	{
-		return LogMessage::debug("Jasoom", "I come from Jasoom", "08-11-2020 12:11:10", 1);
-	}
-
+	
 	TEST(LogNameLayoutTests, Constructor) {
 		LogNameLayout layout;
 	}
 
 	TEST(LogNameLayoutTests, Layout) {
 		LogNameLayout layout;
-		LogMessage msg = DebugMessage();
+		LogMessage msg = Messages::DebugMessage();
 		auto content = layout.layout(msg);
 
 		EXPECT_EQ("[Jasoom]", content);
