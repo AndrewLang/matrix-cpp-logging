@@ -24,6 +24,20 @@ namespace Logging
         std::string getTimmestamp();
         std::shared_ptr<LogLevel> getLevel();
         int getIndent();
+
+		// return LogMessage instance because optimization of modern c++
+		/*
+		create debug level message 
+		*/
+        static LogMessage debug(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+
+		static LogMessage info(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+
+		static LogMessage warn(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+
+		static LogMessage error(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+
+		static LogMessage fatal(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
     };
 
 } // namespace Logging
