@@ -25,7 +25,7 @@ namespace Logging
     {
         return mTimestamp;
     }
-    std::shared_ptr<LogLevel> LogMessage::getLevel()
+    std::shared_ptr<LogLevel> LogMessage::getLevel() const
     {
         return mLevel;
     }

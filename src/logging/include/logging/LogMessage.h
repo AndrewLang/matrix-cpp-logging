@@ -22,7 +22,7 @@ namespace Logging
         std::string getName() const;
         std::string getMessage() const;
         std::string getTimmestamp() const;
-        std::shared_ptr<LogLevel> getLevel();
+        std::shared_ptr<LogLevel> getLevel() const;
         int getIndent() const;
 
 		// return LogMessage instance because optimization of modern c++
