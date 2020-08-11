@@ -27,6 +27,7 @@ SET(HeaderFiles
 	include/logging/LogLevels.h
 	include/logging/LogMessage.h
 	include/logging/LogLayout.h
+	include/logging/LogNameLayout.h
 	include/logging/LoggerBase.h
 	include/logging/LoggerFactory.h
 	include/logging/LogLevelConverter.h
@@ -59,6 +60,7 @@ SET(SourceFiles
 	src/logging/LogLevel.cpp
 	src/logging/LogLevels.cpp
 	src/logging/LogMessage.cpp	
+	src/logging/LogNameLayout.cpp
 	src/logging/VsOutput.cpp
 	src/logging/VsOutputLogger.cpp
 	src/logging/VsOutputLoggerProvider.cpp

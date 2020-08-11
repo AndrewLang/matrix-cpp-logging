@@ -29,6 +29,7 @@ namespace Logging
 
 		static constexpr const char* NewLine = "\n";
 		static constexpr const char* Tab = "\t";
+		static constexpr const char* Empty = "";
 
 		static std::vector<std::string> split(const std::string& value, const char& delimiter = ' ')
 		{

@@ -19,11 +19,11 @@ namespace Logging
         LogMessage() = delete;
         ~LogMessage();
 
-        std::string getName();
-        std::string getMessage();
-        std::string getTimmestamp();
+        std::string getName() const;
+        std::string getMessage() const;
+        std::string getTimmestamp() const;
         std::shared_ptr<LogLevel> getLevel();
-        int getIndent();
+        int getIndent() const;
 
 		// return LogMessage instance because optimization of modern c++
 		/*

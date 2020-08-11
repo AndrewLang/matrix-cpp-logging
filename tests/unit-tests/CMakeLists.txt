@@ -49,6 +49,7 @@ set (SourceFiles
 	tests/logging/LogLevelTests.cpp
 	tests/logging/LogLevelsTests.cpp
 	tests/logging/LogMessageTests.cpp
+	tests/logging/LogNameLayoutTests.cpp
 	tests/logging/VsOutputLogger.cpp
 	tests/logging/VsOutputLoggerProviderTests.cpp
 )

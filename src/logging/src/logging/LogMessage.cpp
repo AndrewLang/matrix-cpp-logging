@@ -13,15 +13,15 @@ namespace Logging
     {
     }
 
-    std::string LogMessage::getName()
+    std::string LogMessage::getName() const
     {
         return mName;
     }
-    std::string LogMessage::getMessage()
+    std::string LogMessage::getMessage() const
     {
         return mMessage;
     }
-    std::string LogMessage::getTimmestamp()
+    std::string LogMessage::getTimmestamp() const
     {
         return mTimestamp;
     }
@@ -29,7 +29,7 @@ namespace Logging
     {
         return mLevel;
     }
-    int LogMessage::getIndent()
+    int LogMessage::getIndent() const
     {
         return mIndent;
     }
