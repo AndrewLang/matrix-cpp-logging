@@ -1,5 +1,6 @@
 #pragma once
-#include "LogMessage.h";
+
+#include "LogMessage.h"
 
 namespace Logging
 {

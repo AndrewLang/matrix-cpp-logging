@@ -29,15 +29,15 @@ namespace Logging
 		/*
 		create debug level message 
 		*/
-        static LogMessage debug(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+        static LogMessage debug(const std::string& name, const std::string& message, const std::string& timestamp = "", const int indent = 0);
 
-		static LogMessage info(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+		static LogMessage info(const std::string& name, const std::string& message, const std::string& timestamp = "", const int indent = 0);
 
-		static LogMessage warn(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+		static LogMessage warn(const std::string& name, const std::string& message, const std::string& timestamp = "", const int indent = 0);
 
-		static LogMessage error(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+		static LogMessage error(const std::string& name, const std::string& message, const std::string& timestamp = "", const int indent = 0);
 
-		static LogMessage fatal(const std::string& name, const std::string& message, const std::string& timestamp, const int indent);
+		static LogMessage fatal(const std::string& name, const std::string& message, const std::string& timestamp = "", const int indent = 0);
     };
 
 } // namespace Logging
