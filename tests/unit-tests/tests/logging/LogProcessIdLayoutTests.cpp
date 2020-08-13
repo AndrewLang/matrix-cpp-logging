@@ -1,23 +1,21 @@
 
 #include "pch.h"
 #include "gtest/gtest.h"
-#include "logging/LogThreadIdLayout.h"
+#include "logging/LogProcessIdLayout.h"
 #include "logging/LogMessage.h"
 #include "Messages.h"
 
 namespace Logging
 {
-	using namespace std;
 
-	TEST(LogThreadIdLayoutTests, Constructor) {
-		LogThreadIdLayout layout;
+	TEST(LogProcessIdLayoutTests, Constructor) {
+		LogProcessIdLayout layout;
 	}
 
-	TEST(LogThreadIdLayoutTests, Layout) {
-		LogThreadIdLayout layout;
+	TEST(LogProcessIdLayoutTests, Layout) {
+		LogProcessIdLayout layout;
 		LogMessage msg = Messages::DebugMessage();
 		auto content = layout.layout(msg);
-		
 		std::cout << content << std::endl;
 	}
 }

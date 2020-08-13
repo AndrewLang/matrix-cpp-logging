@@ -33,6 +33,7 @@ SET(HeaderFiles
 	include/logging/LogIndentLayout.h
 	include/logging/LogMessageLayout.h
 	include/logging/LogThreadIdLayout.h
+	include/logging/LogProcessIdLayout.h
 	include/logging/LoggerBase.h
 	include/logging/LoggerFactory.h
 	include/logging/LogLevelConverter.h
@@ -71,6 +72,7 @@ SET(SourceFiles
 	src/logging/LogIndentLayout.cpp
 	src/logging/LogMessageLayout.cpp
 	src/logging/LogThreadIdLayout.cpp
+	src/logging/LogProcessIdLayout.cpp
 	src/logging/VsOutput.cpp
 	src/logging/VsOutputLogger.cpp
 	src/logging/VsOutputLoggerProvider.cpp

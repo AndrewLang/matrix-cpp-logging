@@ -57,6 +57,7 @@ set (SourceFiles
 	tests/logging/LogIndentLayoutTests.cpp
 	tests/logging/LogMessageLayoutTests.cpp
 	tests/logging/LogThreadIdLayoutTests.cpp
+	tests/logging/LogProcessIdLayoutTests.cpp
 	tests/logging/VsOutputLogger.cpp
 	tests/logging/VsOutputLoggerProviderTests.cpp
 )
