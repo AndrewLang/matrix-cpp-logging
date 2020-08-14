@@ -51,6 +51,7 @@ set (SourceFiles
 	tests/logging/LogLevelTests.cpp
 	tests/logging/LogLevelsTests.cpp
 	tests/logging/LogMessageTests.cpp
+	tests/logging/LogLayoutRepositoryTests.cpp
 	tests/logging/LogNameLayoutTests.cpp
 	tests/logging/LogTimestampLayoutTests.cpp
 	tests/logging/LogLevelLayoutTests.cpp
@@ -58,6 +59,7 @@ set (SourceFiles
 	tests/logging/LogMessageLayoutTests.cpp
 	tests/logging/LogThreadIdLayoutTests.cpp
 	tests/logging/LogProcessIdLayoutTests.cpp
+	tests/logging/LogNoneLayoutTests.cpp
 	tests/logging/VsOutputLogger.cpp
 	tests/logging/VsOutputLoggerProviderTests.cpp
 )
