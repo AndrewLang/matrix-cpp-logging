@@ -9,7 +9,7 @@ namespace Logging
 	class ILoggerProvider
 	{
 	public:
-		virtual std::shared_ptr<ILogger> createLogger(std::string name) = 0;
+		virtual std::shared_ptr<ILogger> createLogger(const std::string& name) = 0;
 	};
 
 }

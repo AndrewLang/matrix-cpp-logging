@@ -15,7 +15,7 @@ namespace Logging
 		mLoggers.clear();
 	}
 
-	ILogger & InternalLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	/*ILogger & InternalLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
 	{
 		std::vector<std::exception> exceptions;
 		for (auto logger : mLoggers)
@@ -36,9 +36,9 @@ namespace Logging
 		}
 
 		return *this;
-	}
+	}*/
 
-	bool InternalLogger::isEnabled(LogLevelEnum level)
+	bool InternalLogger::isEnabled(std::shared_ptr<LogLevel> level)
 	{
 		for (auto logger : mLoggers)
 		{
@@ -50,47 +50,18 @@ namespace Logging
 		return false;
 	}
 
-	ILogger & InternalLogger::debug(std::string message)
-	{
-		log(LogLevelEnum::Debug, message);
-
-		return *this;
-	}
-
-	ILogger & InternalLogger::trace(std::string message)
-	{
-		log(LogLevelEnum::Trace, message);
-		return *this;
-	}
-
-	ILogger & InternalLogger::info(std::string message)
-	{
-		log(LogLevelEnum::Information, message);
-		return *this;
-	}
-
-	ILogger & InternalLogger::warning(std::string message)
-	{
-		log(LogLevelEnum::Warning, message);
-		return *this;
-	}
-
-	ILogger & InternalLogger::error(std::string message)
-	{
-		log(LogLevelEnum::Error, message);
-		return *this;
-	}
-
-	ILogger & InternalLogger::fatal(std::string message)
-	{
-		log(LogLevelEnum::Fatal, message);
-		return *this;
-	}
+	
 
 	void InternalLogger::addProvider(std::shared_ptr<ILoggerProvider> provider)
 	{
 		auto logger = provider->createLogger(name);
 		mLoggers.push_back(logger);
+	}
+
+	ILogger & InternalLogger::log(LogMessage message)
+	{
+		// TODO: insert return statement here
+		return *this;
 	}
 
 	void InternalLogger::initialize()

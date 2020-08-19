@@ -4,27 +4,18 @@
 
 namespace Logging
 {
-	VsOutputLogger::VsOutputLogger(const std::string & loggerName)
+	VsOutputLogger::VsOutputLogger(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel)
+		:LoggerBase(loggerName, loggerLayouts, loggerMiniLevel)
 	{
-		name = loggerName;
+		
 	}
-
-	VsOutputLogger::VsOutputLogger(const VsOutputLogger & logger)
-	{
-		name = logger.name;
-	}
-
-
+	   
 	VsOutputLogger::~VsOutputLogger()
 	{
 	}
 
-	ILogger & VsOutputLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+	void VsOutputLogger::write(std::string message)
 	{
-		auto text = StringExtensions::wrapBySquare(name) + SPACE + format(level, message, eveintId, exception, formatter);
-		
-		VsOutput::debugLine(text);
-		
-		return *this;
+		VsOutput::debugLine(message);
 	}
 }

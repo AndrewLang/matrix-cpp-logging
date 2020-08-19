@@ -11,8 +11,6 @@ namespace Logging
 
 	public:
 		virtual std::string layout(const LogMessage& message) = 0;
-
-
 	};
 
 	class LogLayout : public ILogLayout

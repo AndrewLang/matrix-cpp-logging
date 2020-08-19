@@ -38,7 +38,6 @@ SET(HeaderFiles
 	include/logging/LogNoneLayout.h
 	include/logging/LoggerBase.h
 	include/logging/LoggerFactory.h
-	include/logging/LogLevelConverter.h
 	include/logging/LogMessageName.h
 	include/logging/VsOutput.h
 	include/logging/VsOutputLogger.h
@@ -64,7 +63,6 @@ SET(SourceFiles
 	src/logging/InternalLogger.cpp
 	src/logging/LoggerBase.cpp
 	src/logging/LoggerFactory.cpp
-	src/logging/LogLevelConverter.cpp
 	src/logging/LogLevel.cpp
 	src/logging/LogLevels.cpp
 	src/logging/LogMessage.cpp	

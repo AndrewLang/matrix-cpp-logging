@@ -2,57 +2,64 @@
 #include "gtest/gtest.h"
 #include "logging/VsOutputLogger.h"
 #include "logging/LogMessageName.h"
+#include "logging//LogLevels.h"
 
 #include <memory>
 
 namespace Logging
 {
+	VsOutputLogger createLogger() {
+		std::vector<std::shared_ptr<ILogLayout>> layouts;
+		VsOutputLogger logger("test", layouts, LogLevels::Default()->all());
+
+		return logger;
+	}
+
 	TEST(VsOutputLoggerTests, Constructor)
 	{
-		VsOutputLogger logger("test");
+		VsOutputLogger logger = createLogger();
 
 		EXPECT_EQ("test", logger.name);
 	}
 
 	TEST(VsOutputLoggerTests, LoggerMessages)
 	{
-		VsOutputLogger logger("test");
+		VsOutputLogger logger = createLogger();
 
 		EXPECT_EQ("test", logger.name);
 
 		logger.debug("this is debug")
 			.error("this is error")
 			.fatal("this is fatal")
-			.info("this is info")
-			.trace("this is trace")
+			.info("this is info")			
 			.warning("this is warning");
 	}
 
 	TEST(VsOutputLoggerTests, LogWithGroup)
 	{
-		VsOutputLogger logger("test");
+		VsOutputLogger logger = createLogger();
 
 		EXPECT_EQ("test", logger.name);
 
-		logger
-			.startGroup("test group")
+		logger			
 			.debug("this is debug")
 			.error("this is error")
 			.fatal("this is fatal")
 			.info("this is info")
-			.trace("this is trace")
 			.warning("this is warning")
-			.endGroup();
+			;
 	}
 
 	TEST(VsOutputLoggerTests, LogMessageWithName) {
-		std::shared_ptr<ILogger> logger = std::make_shared<VsOutputLogger>("test");
+		std::vector<std::shared_ptr<ILogLayout>> layouts;
+		std::shared_ptr<ILogger> logger = std::make_shared<VsOutputLogger>("test", layouts, LogLevels::Default()->all());
+
 
 		EXPECT_EQ("test", logger->name);
 
-		logger->info(N("Iron man"), "1. this is a test")
-			.info(N("Spider man"), "2. this is a test")
-			.info(N("Caption American"), "3. this is a test")
-			.info(N("Hulk"), "4. this is a test");
+		logger->info("Iron man", "1. this is a test")
+			.info("Spider man", "2. this is a test")
+			.info("Caption American", "3. this is a test")
+			.info("Hulk", "4. this is a test");
 	}
 }

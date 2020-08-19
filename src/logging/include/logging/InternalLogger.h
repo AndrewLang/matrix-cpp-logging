@@ -12,7 +12,7 @@ namespace Logging
 	class InternalLogger : public ILogger
 	{
 	public:
-		InternalLogger(std::shared_ptr<ILoggerFactory> factory, std::string name);		
+		InternalLogger(std::shared_ptr<ILoggerFactory> factory, std::string name);
 
 		InternalLogger() = delete;
 
@@ -22,30 +22,23 @@ namespace Logging
 
 		~InternalLogger();
 
-		ILogger& log(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter()) override;
+		//ILogger& log(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter()) override;
 
-		bool isEnabled(LogLevelEnum level) override;
+		bool isEnabled(std::shared_ptr<LogLevel> level) override;
 
 		void addProvider(std::shared_ptr<ILoggerProvider> provider);
 
-		ILogger& debug(std::string message) override;
-
-		ILogger& trace(std::string message) override;
-
-		ILogger& info(std::string message) override;
-
-		ILogger& warning(std::string message) override;
-
-		ILogger& error(std::string message) override;
-
-		ILogger& fatal(std::string message) override;
+		virtual ILogger& log(LogMessage message) override;
 
 	private:
 		std::shared_ptr<ILoggerFactory> mFactory;
-	
+
 		std::vector<std::shared_ptr<ILogger>> mLoggers;
 
 		void initialize();
+
+	protected:
+		
 	};
 
 }

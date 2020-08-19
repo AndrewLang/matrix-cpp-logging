@@ -1,5 +1,4 @@
 #include "logging/ConsoleLogger.h"
-#include "logging/LogLevelConverter.h"
 
 #include <iostream>
 #include <iomanip>
@@ -12,30 +11,32 @@ using namespace std::chrono;
 
 namespace Logging
 {
-	ConsoleLogger::ConsoleLogger(const std::string & loggerName)
+	ConsoleLogger::ConsoleLogger()	
 	{
-		name = loggerName;
-		mCreatedDate = StringExtensions::getTimestamp();
+
+	}
+
+	ConsoleLogger::ConsoleLogger(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel)
+		:LoggerBase(loggerName, loggerLayouts, loggerMiniLevel)
+	{
+
 	}
 
 	ConsoleLogger::ConsoleLogger(const ConsoleLogger& logger)
 	{
 		name = logger.name;
+		layouts = logger.layouts;
+		miniLevel = logger.miniLevel;
 	}
-
+	
 	ConsoleLogger::~ConsoleLogger()
 	{
 		
 	}
-	
-	ILogger & ConsoleLogger::log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter)
+
+	void ConsoleLogger::write(std::string message)
 	{
-		auto text = format(level, message, eveintId, exception, formatter);
-
-		LogLevelConverter converter;
-
-		cout << StringExtensions::wrapBySquare(StringExtensions::getTimestamp()) << StringExtensions::wrapBySquare(name) << text << endl;
-
-		return *this;
+		cout << message << endl;
 	}
+	
 }

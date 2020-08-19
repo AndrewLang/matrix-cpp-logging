@@ -1,37 +1,33 @@
 #pragma once
 #include "ILogger.h"
-#include "LogLevelConverter.h"
+#include "LogLayout.h"
 
 
 namespace Logging
 {
 	class LoggerBase :public ILogger
 	{
+	private:
+		
+
 	public:
 		LoggerBase();
 
+		LoggerBase(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel);
+		
 		~LoggerBase();
 
-		bool isEnabled(LogLevelEnum level) override;
+		bool isEnabled(std::shared_ptr<LogLevel> level) override;
 
-		ILogger& debug(std::string message) override;
-
-		ILogger& trace(std::string message) override;
-
-		ILogger& info(std::string message) override;
-
-		ILogger& warning(std::string message) override;
-
-		ILogger& error(std::string message) override;
-
-		ILogger& fatal(std::string message) override;
+		ILogger& log(LogMessage message) override;
 
 	protected:
-		std::string format(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter());
+		std::shared_ptr<LogLevel> miniLevel;
+		std::vector<std::shared_ptr<ILogLayout>> layouts;
 
-		LogLevelConverter mConverter;
+		virtual void write(const std::string message) = 0;
 
-		std::string wrapText(std::string value);
+
 	};
 
 }

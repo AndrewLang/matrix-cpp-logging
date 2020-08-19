@@ -6,17 +6,16 @@ namespace Logging
 	class ConsoleLogger :public LoggerBase
 	{
 	public:
-		ILogger& log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter) override;
-
-		ConsoleLogger() = delete;
-
-		ConsoleLogger(const std::string & name);
-
+		ConsoleLogger();
+		ConsoleLogger(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel);
 		ConsoleLogger(const ConsoleLogger& logger);
 
 		~ConsoleLogger();
 	private:
 		std::string mCreatedDate;
+
+	protected:
+		virtual void write(std::string message) override;
 	};
 
 }
