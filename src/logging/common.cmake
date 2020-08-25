@@ -19,6 +19,7 @@ SET(HeaderFiles
 
 	include/logging/ConsoleLogger.h
 	include/logging/ConsoleLoggerProvider.h
+	include/logging/Configuration.h
 	include/logging/ILogger.h
 	include/logging/ILoggerFactory.h
 	include/logging/ILoggerProvider.h
@@ -38,7 +39,6 @@ SET(HeaderFiles
 	include/logging/LogNoneLayout.h
 	include/logging/LoggerBase.h
 	include/logging/LoggerFactory.h
-	include/logging/LogMessageName.h
 	include/logging/VsOutput.h
 	include/logging/VsOutputLogger.h
 	include/logging/VsOutputLoggerProvider.h
@@ -60,6 +60,7 @@ SET(SourceFiles
 
 	src/logging/ConsoleLogger.cpp
 	src/logging/ConsoleLoggerProvider.cpp
+	src/logging/Configuration.cpp
 	src/logging/InternalLogger.cpp
 	src/logging/LoggerBase.cpp
 	src/logging/LoggerFactory.cpp

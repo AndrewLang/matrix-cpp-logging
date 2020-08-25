@@ -12,7 +12,7 @@ namespace Logging
 
 		~ConsoleLogger();
 	private:
-		std::string mCreatedDate;
+		
 
 	protected:
 		virtual void write(std::string message) override;

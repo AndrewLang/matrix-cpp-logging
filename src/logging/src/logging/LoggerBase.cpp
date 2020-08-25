@@ -44,4 +44,14 @@ namespace Logging
 		return *this;
 	}
 
+	std::vector<std::shared_ptr<ILogLayout>> LoggerBase::getLayouts()
+	{
+		return layouts;
+	}
+
+	std::shared_ptr<LogLevel> LoggerBase::getMiniLevel()
+	{
+		return miniLevel;
+	}
+
 }

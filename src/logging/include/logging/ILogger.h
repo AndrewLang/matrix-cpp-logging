@@ -1,7 +1,6 @@
 #pragma once
 #include "common/TextFormatter.h"
 #include "common/StringExtensions.h"
-#include "LogMessageName.h"
 #include "LogLevel.h"
 #include "LogMessage.h"
 

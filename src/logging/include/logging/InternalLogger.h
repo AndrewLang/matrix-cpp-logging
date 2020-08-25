@@ -22,8 +22,6 @@ namespace Logging
 
 		~InternalLogger();
 
-		//ILogger& log(LogLevelEnum level, std::string message, int eveintId = 0, std::exception* exception = nullptr, TextFormatter formatter = TextFormatter::DefaultTextFormatter()) override;
-
 		bool isEnabled(std::shared_ptr<LogLevel> level) override;
 
 		void addProvider(std::shared_ptr<ILoggerProvider> provider);

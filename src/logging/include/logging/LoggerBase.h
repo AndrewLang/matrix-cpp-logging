@@ -21,6 +21,10 @@ namespace Logging
 
 		ILogger& log(LogMessage message) override;
 
+		std::vector<std::shared_ptr<ILogLayout>> getLayouts();
+
+		std::shared_ptr<LogLevel> getMiniLevel();
+
 	protected:
 		std::shared_ptr<LogLevel> miniLevel;
 		std::vector<std::shared_ptr<ILogLayout>> layouts;

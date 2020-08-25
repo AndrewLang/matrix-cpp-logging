@@ -7,6 +7,7 @@ namespace Logging
 	{
 	public:
 		ConsoleLoggerProvider();
+
 		~ConsoleLoggerProvider();
 
 		std::shared_ptr<ILogger> createLogger(const std::string& name) override;

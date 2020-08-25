@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "gtest/gtest.h"
 #include "logging/VsOutputLogger.h"
-#include "logging/LogMessageName.h"
 #include "logging//LogLevels.h"
 
 #include <memory>
