@@ -4,6 +4,7 @@
 #include "LogLayout.h"
 #include <map>
 #include <functional>
+#include <queue> 
 
 namespace Logging
 {
@@ -19,6 +20,7 @@ namespace Logging
 		static constexpr const char* Indent = "indent";
 		static constexpr const char* ThreadId = "threadid";
 		static constexpr const char* ProcessId = "processid";
+		static constexpr const char* Text = "text";
 		static constexpr const char* None = "none";
 	};
 
@@ -36,8 +38,12 @@ namespace Logging
 
 		std::shared_ptr<ILogLayout> get(const std::string name);
 
+		std::vector<std::shared_ptr<ILogLayout>> parse(const std::string&  format);
+
 	private:
 		std::map<std::string, LogLayoutCreator> creators;
+
+		std::string toString(std::queue<char>& chars);
 	};
 
 }

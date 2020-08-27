@@ -55,7 +55,7 @@ namespace Logging
 				size_t pos = SIZE_MAX;
 				std::tuple<size_t, std::string> posInfo;
 
-				
+
 				for (const auto& spliter : splitters)
 				{
 					size_t temp = text.find(spliter);
@@ -79,7 +79,7 @@ namespace Logging
 
 					remain.erase(0, pos + std::get<1>(posInfo).length());
 				}
-				else 
+				else
 				{
 					result.push_back(remain);
 				}
@@ -240,6 +240,7 @@ namespace Logging
 			return target;
 		}
 
+		
 		static std::wstring toWString(const std::string& value)
 		{
 			std::wstringstream stream;
@@ -300,7 +301,7 @@ namespace Logging
 		{
 			std::time_t rawtime = std::time(0);
 			static char result[20];
-			
+
 
 #if defined (__linux__)	
 			struct tm* timeinfo = std::localtime(&rawtime);
@@ -311,11 +312,11 @@ namespace Logging
 			localtime_s(&timeinfo, &rawtime);
 			strftime(result, sizeof(result), "%Y-%m-%d %H:%M:%S", &timeinfo);
 #endif
-					
-			
+
+
 
 			return result;
-		}
+	}
 
 		static std::string trimStart(const std::string& value, const char trimChars[] = " ")
 		{
@@ -364,7 +365,7 @@ namespace Logging
 		{
 			return std::tolower(first) == std::tolower(second);
 		}
-	};
+};
 
 	using Strings = StringExtensions;
 }

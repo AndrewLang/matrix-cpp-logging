@@ -1,9 +1,9 @@
 #pragma once
-#include "ILoggerProvider.h"
+#include "BaseLoggerProvider.h"
 
 namespace Logging
 {
-	class VsOutputLoggerProvider : public ILoggerProvider
+	class VsOutputLoggerProvider : public BaseLoggerProvider
 	{
 	public:
 		VsOutputLoggerProvider();

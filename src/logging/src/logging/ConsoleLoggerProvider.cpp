@@ -1,4 +1,4 @@
-#include "logging/ConsoleLoggerProvider.h"
+ #include "logging/ConsoleLoggerProvider.h"
 #include "logging/ConsoleLogger.h"
 #include "logging/LogLevels.h"
 

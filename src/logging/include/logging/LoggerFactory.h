@@ -22,11 +22,14 @@ namespace Logging
 
 		std::vector<std::shared_ptr<ILoggerProvider>> getProviders() override;
 				
+		ILoggerFactory& configure(std::shared_ptr<Configuration> configure) override;
 
 	private:
 		std::vector<std::shared_ptr<ILoggerProvider>> mProviders;
 
 		std::map<std::string, std::shared_ptr<InternalLogger>> mLoggers;
+
+		std::shared_ptr<Configuration> config;
 	};
 
 }

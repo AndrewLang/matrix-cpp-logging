@@ -17,6 +17,6 @@ namespace Logging
 		LogMessage msg = Messages::DebugMessage();
 		auto content = layout.layout(msg);
 
-		EXPECT_EQ("[Debug]", content);
+		EXPECT_EQ("Debug", content);
 	}
 }

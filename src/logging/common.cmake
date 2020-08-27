@@ -17,6 +17,7 @@ SET(HeaderFiles
 	include/common/TextFormatter.h
 	include/common/VectorExtensions.h
 
+	include/logging/BaseLoggerProvider.h
 	include/logging/ConsoleLogger.h
 	include/logging/ConsoleLoggerProvider.h
 	include/logging/Configuration.h
@@ -37,6 +38,7 @@ SET(HeaderFiles
 	include/logging/LogThreadIdLayout.h
 	include/logging/LogProcessIdLayout.h
 	include/logging/LogNoneLayout.h
+	include/logging/LogTextLayout.h
 	include/logging/LoggerBase.h
 	include/logging/LoggerFactory.h
 	include/logging/VsOutput.h
@@ -58,6 +60,7 @@ SET(SourceFiles
 	src/common/StringExtensions.cpp
 	src/common/TextFormatter.cpp
 
+	src/logging/BaseLoggerProvider.cpp
 	src/logging/ConsoleLogger.cpp
 	src/logging/ConsoleLoggerProvider.cpp
 	src/logging/Configuration.cpp
@@ -76,6 +79,7 @@ SET(SourceFiles
 	src/logging/LogThreadIdLayout.cpp
 	src/logging/LogProcessIdLayout.cpp
 	src/logging/LogNoneLayout.cpp
+	src/logging/LogTextLayout.cpp
 	src/logging/VsOutput.cpp
 	src/logging/VsOutputLogger.cpp
 	src/logging/VsOutputLoggerProvider.cpp

@@ -36,6 +36,7 @@ namespace Logging
 
 	void LoggerFactory::addProvider(std::shared_ptr<ILoggerProvider> provider)
 	{
+		provider->configure(config);
 		mProviders.push_back(provider);
 
 		for (auto &pair : mLoggers)
@@ -47,5 +48,10 @@ namespace Logging
 	std::vector<std::shared_ptr<ILoggerProvider>> LoggerFactory::getProviders()
 	{
 		return mProviders;
+	}
+	ILoggerFactory & LoggerFactory::configure(std::shared_ptr<Configuration> configure)
+	{
+		config = configure;
+		return *this;
 	}
 }
