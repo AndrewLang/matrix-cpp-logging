@@ -6,7 +6,8 @@
 
 namespace Logging
 {
-	TEST(ConsoleLoggerProviderTests, Constructor) {
+	TEST(ConsoleLoggerProviderTests, Constructor) 
+	{
 		ConsoleLoggerProvider provider;
 	}
 	TEST(ConsoleLoggerProviderTests, CreateLogger)
@@ -41,13 +42,12 @@ namespace Logging
 		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
 		consoleConfig->enableColor = true;
 		consoleConfig->isEnabled = true;
-		consoleConfig->type = "console";
 		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
 
 		configuration->addConfig(consoleConfig);
+
 		factory->configure(configuration);
-
-
+		
 		ConsoleLoggerProvider provider;
 		provider.configure(factory->getContext());
 

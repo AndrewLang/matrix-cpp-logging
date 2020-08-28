@@ -10,5 +10,8 @@ namespace Logging
 
 	protected:
 		std::shared_ptr<LoggerContext> context;
+		std::string configurationType;
+		
+		std::vector<std::shared_ptr<ILogLayout>> getLayouts(const std::string& type = "");
 	};
 }
