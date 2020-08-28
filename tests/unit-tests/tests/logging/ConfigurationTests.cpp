@@ -33,4 +33,26 @@ namespace Logging
 		EXPECT_TRUE(actual->isEnabled);
 
 	}
+
+	TEST(ConfigurationTests, GetConfig) {
+		Configuration configuration;
+
+		auto configure = std::make_shared<ConsoleLoggerConfig>(); 
+		configure->type = "console";
+		configure->level = LogLevels::Default()->info();
+		configure->isEnabled = true;
+		configure->enableColor = true;
+		configuration.addConfig(configure);
+
+		auto actual = configuration.get<ConsoleLoggerConfig>("console");
+
+		EXPECT_NE(nullptr, actual);
+
+		EXPECT_EQ("console", actual->type);
+		EXPECT_EQ("Info", actual->level->getName());
+		EXPECT_TRUE(actual->isEnabled);
+		EXPECT_TRUE(actual->enableColor);
+		EXPECT_EQ(0, actual->colors.size());
+
+	}
 }

@@ -50,6 +50,18 @@ namespace Logging
 		Configuration& addConfig(std::shared_ptr<LoggerConfig> configure);
 
 		std::shared_ptr<LoggerConfig> getConfig(const std::string& type);
+
+		template<class T>
+		std::shared_ptr<T> get(const std::string& type)
+		{
+			auto config = getConfig(type);
+			if (config != nullptr)
+			{
+				return std::static_pointer_cast<T>(config);
+			}
+			return nullptr;
+		}
+
 	private:
 		std::map<std::string, std::shared_ptr<LoggerConfig>> configs;
 	};
