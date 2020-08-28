@@ -22,6 +22,8 @@ namespace Logging
 
 		virtual ILoggerFactory& configure(std::shared_ptr<Configuration> configure) = 0;
 
+		
+
 		template<class TKey, class ... TArgs>
 		ILoggerFactory& useProvider(TArgs... args)
 		{

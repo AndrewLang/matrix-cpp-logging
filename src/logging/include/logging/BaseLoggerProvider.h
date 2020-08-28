@@ -6,9 +6,9 @@ namespace Logging
 	class BaseLoggerProvider : public ILoggerProvider
 	{
 	public:		
-		void configure(std::shared_ptr<Configuration> configuration) override;
+		void configure(std::shared_ptr<LoggerContext> context) override;
 
 	protected:
-		std::shared_ptr<Configuration> config;
+		std::shared_ptr<LoggerContext> context;
 	};
 }

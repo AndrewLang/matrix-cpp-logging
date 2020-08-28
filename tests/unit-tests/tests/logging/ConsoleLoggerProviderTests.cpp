@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "logging/ConsoleLoggerProvider.h"
 #include "logging/ILogger.h"
+#include "logging/LoggerFactory.h"
 
 namespace Logging
 {
@@ -10,7 +11,23 @@ namespace Logging
 	}
 	TEST(ConsoleLoggerProviderTests, CreateLogger)
 	{
+		auto configuration = std::make_shared<Configuration>();
+		auto factory = std::make_shared<LoggerFactory>();
+		factory->configure(configuration);
+
+		factory->useProvider<ConsoleLoggerProvider>();
+
+		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
+		consoleConfig->enableColor = true;
+		consoleConfig->isEnabled = true;
+		consoleConfig->type = LoggerConfigTypes::Console;
+		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
+
+		configuration->addConfig(consoleConfig);
+
 		ConsoleLoggerProvider provider;
+		provider.configure(factory->getContext());
+
 		auto logger = provider.createLogger("test");
 				
 		ASSERT_EQ("test", logger->name);
@@ -18,18 +35,21 @@ namespace Logging
 
 	TEST(ConsoleLoggerProviderTests, CreateLoggerWithConfiguration)
 	{
+		auto factory = std::make_shared<LoggerFactory>();
 		auto configuration = std::make_shared<Configuration>();
 		
-		auto config = std::make_shared<ConsoleLoggerConfig>();
-		config->enableColor = true;
-		config->isEnabled = true;
-		config->type = "console";
-		config->layout = "{{date}} {{name}}: {{message}}";
+		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
+		consoleConfig->enableColor = true;
+		consoleConfig->isEnabled = true;
+		consoleConfig->type = "console";
+		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
 
-		configuration->addConfig(config);
+		configuration->addConfig(consoleConfig);
+		factory->configure(configuration);
+
 
 		ConsoleLoggerProvider provider;
-		provider.configure(configuration);
+		provider.configure(factory->getContext());
 
 		auto logger = provider.createLogger("jasoom");
 		ASSERT_EQ("jasoom", logger->name);

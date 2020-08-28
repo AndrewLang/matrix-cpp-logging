@@ -36,7 +36,7 @@ namespace Logging
 
 	void LoggerFactory::addProvider(std::shared_ptr<ILoggerProvider> provider)
 	{
-		provider->configure(config);
+		provider->configure(context);
 		mProviders.push_back(provider);
 
 		for (auto &pair : mLoggers)
@@ -49,9 +49,20 @@ namespace Logging
 	{
 		return mProviders;
 	}
-	ILoggerFactory & LoggerFactory::configure(std::shared_ptr<Configuration> configure)
+	ILoggerFactory & LoggerFactory::configure(std::shared_ptr<Configuration> configuration)
 	{
-		config = configure;
+		auto layoutRepo = std::make_shared<LogLayoutRepository>();
+		layoutRepo->initialize();
+
+		context = std::make_shared<LoggerContext>();
+		context->factory = shared_from_this();
+		context->layoutRepo = layoutRepo;
+		context->configuration = configuration;
+
 		return *this;
+	}
+	std::shared_ptr<LoggerContext> LoggerFactory::getContext()
+	{
+		return context;
 	}
 }

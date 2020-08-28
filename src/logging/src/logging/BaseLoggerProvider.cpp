@@ -2,8 +2,8 @@
 
 namespace Logging
 {
-	void BaseLoggerProvider::configure(std::shared_ptr<Configuration> configuration)
+	void BaseLoggerProvider::configure(std::shared_ptr<LoggerContext> loggerContext)
 	{
-		config = configuration;
+		context = loggerContext;
 	}
 }

@@ -6,6 +6,13 @@
 
 namespace Logging
 {
+	class LoggerConfigTypes 
+	{
+	public:
+		static constexpr const char* Console = "console";
+		static constexpr const char* File = "file";
+	};
+
 	class LoggerConfig
 	{
 	public:
@@ -54,10 +61,10 @@ namespace Logging
 		template<class T>
 		std::shared_ptr<T> get(const std::string& type)
 		{
-			auto config = getConfig(type);
-			if (config != nullptr)
+			auto context = getConfig(type);
+			if (context != nullptr)
 			{
-				return std::static_pointer_cast<T>(config);
+				return std::static_pointer_cast<T>(context);
 			}
 			return nullptr;
 		}

@@ -12,7 +12,7 @@ namespace Logging
 {
 	TEST(LoggerFactoryTests, Constructor)
 	{
-		LoggerFactory factory;
+		auto factory = std::make_shared<LoggerFactory>();
 	}
 	TEST(LoggerFactoryTests, AddProvider)
 	{
@@ -39,9 +39,19 @@ namespace Logging
 
 	TEST(LoggerFactoryTests, CreateLoggerByPointer)
 	{
+		auto configuration = std::make_shared<Configuration>();
 		auto factory = std::make_shared<LoggerFactory>();
+		factory->configure(configuration);
 
 		factory->useProvider<ConsoleLoggerProvider>();
+
+		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
+		consoleConfig->enableColor = true;
+		consoleConfig->isEnabled = true;
+		consoleConfig->type = LoggerConfigTypes::Console;
+		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
+
+		configuration->addConfig(consoleConfig);
 
 		auto logger = factory->createLogger("test");
 
@@ -52,20 +62,20 @@ namespace Logging
 		EXPECT_ANY_THROW(
 			{
 
-			/*
-			LoggerFactory implemented shared_from_this, so it needs create a shared pointer to
-			LoggerFactory first, otherwise there will be a bad weak ptr exception
-			*/
-			LoggerFactory factory;
+				/*
+				LoggerFactory implemented shared_from_this, so it needs create a shared pointer to
+				LoggerFactory first, otherwise there will be a bad weak ptr exception
+				*/
+				LoggerFactory factory;
 
-			factory.useProvider<ConsoleLoggerProvider>();
+				factory.useProvider<ConsoleLoggerProvider>();
 
-			auto logger = factory.createLogger("test");
+				auto logger = factory.createLogger("test");
 
-			ASSERT_EQ("test", logger->name);
+				ASSERT_EQ("test", logger->name);
 			}
 		);
 
 	}
-	
+
 }

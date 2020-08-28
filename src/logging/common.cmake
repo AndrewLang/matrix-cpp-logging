@@ -25,6 +25,7 @@ SET(HeaderFiles
 	include/logging/ILoggerFactory.h
 	include/logging/ILoggerProvider.h
 	include/logging/InternalLogger.h
+	include/logging/LoggerContext.h
 	include/logging/LogLevel.h
 	include/logging/LogLevels.h
 	include/logging/LogMessage.h
@@ -65,6 +66,7 @@ SET(SourceFiles
 	src/logging/ConsoleLoggerProvider.cpp
 	src/logging/Configuration.cpp
 	src/logging/InternalLogger.cpp
+	src/logging/LoggerContext.cpp
 	src/logging/LoggerBase.cpp
 	src/logging/LoggerFactory.cpp
 	src/logging/LogLevel.cpp

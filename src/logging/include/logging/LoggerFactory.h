@@ -1,6 +1,7 @@
 #pragma once
 #include "ILoggerFactory.h"
 #include "InternalLogger.h"
+#include "LoggerContext.h"
 
 #include <map>
 #include <string>
@@ -24,12 +25,13 @@ namespace Logging
 				
 		ILoggerFactory& configure(std::shared_ptr<Configuration> configure) override;
 
+		std::shared_ptr<LoggerContext> getContext();
 	private:
 		std::vector<std::shared_ptr<ILoggerProvider>> mProviders;
 
 		std::map<std::string, std::shared_ptr<InternalLogger>> mLoggers;
-
-		std::shared_ptr<Configuration> config;
+				
+		std::shared_ptr<LoggerContext> context;
 	};
 
 }
