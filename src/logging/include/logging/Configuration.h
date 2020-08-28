@@ -11,6 +11,7 @@ namespace Logging
 	public:
 		static constexpr const char* Console = "console";
 		static constexpr const char* File = "file";
+		static constexpr const char* VsOutput = "vsoutput";
 	};
 
 	class LoggerConfig
@@ -35,6 +36,8 @@ namespace Logging
 	public:
 		bool enableColor;
 		std::vector<ColorConfig> colors;
+
+		ConsoleLoggerConfig();
 	private:
 
 	};
@@ -44,6 +47,7 @@ namespace Logging
 	public:
 		std::string filename;
 
+		FileLoggerConfig();
 	};
 
 

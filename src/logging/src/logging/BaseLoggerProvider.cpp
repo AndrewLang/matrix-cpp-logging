@@ -1,3 +1,4 @@
+#include "..\..\include\logging\BaseLoggerProvider.h"
 #include "logging/BaseLoggerProvider.h"
 #include "common/StringExtensions.h"
 
@@ -7,8 +8,9 @@ namespace Logging
 	{
 		context = loggerContext;
 	}
-	std::vector<std::shared_ptr<ILogLayout>> BaseLoggerProvider::getLayouts(const std::string & type)
+	std::shared_ptr<LoggerConfig> BaseLoggerProvider::getConfig(const std::string & type)
 	{
+		std::shared_ptr<LoggerConfig> config;
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 		std::string configType = type;
 
@@ -17,10 +19,17 @@ namespace Logging
 
 		if (Strings::notNullOrEmpty(configType))
 		{
-			auto config = context->configuration->getConfig(configType);
-			if (config != nullptr)
-				layouts = context->layoutRepo->parse(config->layout);
+			config = context->configuration->getConfig(configType);
 		}
+
+		return config;
+	}
+	std::vector<std::shared_ptr<ILogLayout>> BaseLoggerProvider::getLayouts(std::shared_ptr<LoggerConfig> config)
+	{
+		std::vector<std::shared_ptr<ILogLayout>> layouts;
+
+		if (config != nullptr)
+			layouts = context->layoutRepo->parse(config->layout);
 
 		return layouts;
 	}

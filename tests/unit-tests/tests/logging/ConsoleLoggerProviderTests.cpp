@@ -3,6 +3,7 @@
 #include "logging/ConsoleLoggerProvider.h"
 #include "logging/ILogger.h"
 #include "logging/LoggerFactory.h"
+#include "logging/LogLevels.h"
 
 namespace Logging
 {
@@ -42,6 +43,8 @@ namespace Logging
 		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
 		consoleConfig->enableColor = true;
 		consoleConfig->isEnabled = true;
+		consoleConfig->type = LoggerConfigTypes::Console;
+		consoleConfig->level = LogLevels::Default()->info();
 		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
 
 		configuration->addConfig(consoleConfig);

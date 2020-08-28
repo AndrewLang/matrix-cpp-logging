@@ -19,4 +19,15 @@ namespace Logging
 	{
 		return Maps::get<std::string, std::shared_ptr<LoggerConfig>>(configs, type);		
 	}
+
+
+	ConsoleLoggerConfig::ConsoleLoggerConfig()
+	{
+		type = LoggerConfigTypes::Console;
+	}
+
+	FileLoggerConfig::FileLoggerConfig()
+	{
+		type = LoggerConfigTypes::File;
+	}
 }
