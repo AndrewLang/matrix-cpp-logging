@@ -43,6 +43,16 @@ namespace Logging
 		}
 
 		template<typename ... Args >
+		static void writeLine(Args&& ... args)
+		{
+			TextFormatter formatter;
+			auto message = formatter.format(args...);
+			message = message + StringExtensions::NewLine;
+
+			logMessage(message);
+		}
+
+		template<typename ... Args >
 		static void writeWithName(std::string name, Args&& ... args)
 		{
 			TextFormatter formatter;

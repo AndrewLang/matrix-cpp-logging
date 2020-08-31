@@ -16,6 +16,6 @@ namespace Logging
 
 	void VsOutputLogger::write(std::string message)
 	{
-		VsOutput::debugLine(message);
+		VsOutput::writeLine(message);
 	}
 }

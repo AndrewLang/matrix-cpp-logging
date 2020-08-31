@@ -90,6 +90,7 @@ namespace Logging
 
 		return layouts;
 	}
+	
 	std::string LogLayoutRepository::toString(std::queue<char>& chars)
 	{
 		std::stringstream stream;

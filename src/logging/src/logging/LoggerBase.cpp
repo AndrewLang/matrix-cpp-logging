@@ -31,15 +31,18 @@ namespace Logging
 
 	ILogger & LoggerBase::log(LogMessage message)
 	{
-		std::vector<string> parts;
-		for (auto& item : layouts)
+		if (isEnabled(message.getLevel()))
 		{
-			parts.push_back(item->layout(message));
+			std::vector<string> parts;
+			for (auto& item : layouts)
+			{
+				parts.push_back(item->layout(message));
+			}
+
+			string content = Vectors::join(parts, "");
+
+			write(content);
 		}
-
-		string content = Vectors::join(parts, " ");
-
-		write(content);
 
 		return *this;
 	}

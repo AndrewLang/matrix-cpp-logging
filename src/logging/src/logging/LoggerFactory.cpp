@@ -1,8 +1,7 @@
 #include "logging/LoggerFactory.h"
 
 namespace Logging
-{
-	
+{	
 	LoggerFactory::LoggerFactory()
 	{
 		

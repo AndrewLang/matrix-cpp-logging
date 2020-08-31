@@ -1,14 +1,18 @@
 #include "pch.h"
 #include "gtest/gtest.h"
 #include "logging/VsOutputLogger.h"
-#include "logging//LogLevels.h"
+#include "logging/LogLevels.h"
+#include "logging/LogLayoutRepository.h"
 
 #include <memory>
 
 namespace Logging
 {
 	VsOutputLogger createLogger() {
-		std::vector<std::shared_ptr<ILogLayout>> layouts;
+		auto layoutRepo = std::make_shared<LogLayoutRepository>();
+		layoutRepo->initialize();
+		auto layouts = layoutRepo->parse("{timestamp} [{level}] [{name}]: {message}");
+
 		VsOutputLogger logger("test", layouts, LogLevels::Default()->all());
 
 		return logger;
@@ -21,7 +25,7 @@ namespace Logging
 		EXPECT_EQ("test", logger.name);
 	}
 
-	TEST(VsOutputLoggerTests, LoggerMessages)
+	TEST(VsOutputLoggerTests, LogMessages)
 	{
 		VsOutputLogger logger = createLogger();
 

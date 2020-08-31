@@ -36,8 +36,7 @@ namespace Logging
 	}
 
 	TEST(ConsoleLoggerProviderTests, CreateLoggerWithConfiguration)
-	{
-		auto factory = std::make_shared<LoggerFactory>();
+	{		
 		auto configuration = std::make_shared<Configuration>();
 		
 		auto consoleConfig = std::make_shared<ConsoleLoggerConfig>();
@@ -45,10 +44,11 @@ namespace Logging
 		consoleConfig->isEnabled = true;
 		consoleConfig->type = LoggerConfigTypes::Console;
 		consoleConfig->level = LogLevels::Default()->info();
-		consoleConfig->layout = "{{date}} {{name}}: {{message}}";
+		consoleConfig->layout = "{date} {name}: {message}";
 
 		configuration->addConfig(consoleConfig);
 
+		auto factory = std::make_shared<LoggerFactory>();
 		factory->configure(configuration);
 		
 		ConsoleLoggerProvider provider;
