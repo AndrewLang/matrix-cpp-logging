@@ -74,7 +74,7 @@ namespace Logging
 
 		for (auto item : result)
 		{
-			// VsOutput::writeWithName("Segment:", item);
+			// VsOutput::debugWithName("Segment:", item);
 		}
 
 		ASSERT_EQ(8, result.size());

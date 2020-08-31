@@ -34,9 +34,9 @@ namespace Logging
 
 		LogLayoutRepository& initialize();
 
-		LogLayoutRepository& add(const std::string name, LogLayoutCreator creator);
+		LogLayoutRepository& add(const std::string& name, LogLayoutCreator creator);
 
-		std::shared_ptr<ILogLayout> get(const std::string name);
+		std::shared_ptr<ILogLayout> get(const std::string& name);
 
 		std::vector<std::shared_ptr<ILogLayout>> parse(const std::string&  format);
 

@@ -13,9 +13,6 @@ namespace Logging
 
 		~VsOutputLogger();
 
-
-		// ILogger& log(LogLevelEnum level, std::string message, int eveintId, std::exception* exception, TextFormatter formatter) override;
-
 	protected:
 		virtual void write(std::string message) override;
 	};

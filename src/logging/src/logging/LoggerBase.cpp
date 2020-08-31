@@ -17,9 +17,7 @@ namespace Logging
 		layouts = loggerLayouts;
 		miniLevel = loggerMiniLevel ? loggerMiniLevel: LogLevels::Default()->all();		
 	}
-
-
-
+	   
 	LoggerBase::~LoggerBase()
 	{
 	}
@@ -29,7 +27,7 @@ namespace Logging
 		return level->getValue() > miniLevel->getValue();
 	}
 
-	ILogger & LoggerBase::log(LogMessage message)
+	ILogger & LoggerBase::log(LogMessage& message)
 	{
 		if (isEnabled(message.getLevel()))
 		{

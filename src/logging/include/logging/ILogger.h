@@ -18,7 +18,7 @@ namespace Logging
 
 		virtual bool isEnabled(std::shared_ptr<LogLevel> level) = 0;
 
-		virtual ILogger& log(LogMessage message) = 0;
+		virtual ILogger& log(LogMessage& message) = 0;
 
 		template< typename ... Args >
 		ILogger& debug(Args ... args)

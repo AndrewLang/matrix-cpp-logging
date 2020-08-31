@@ -16,7 +16,6 @@ namespace Logging
 	class LogLayout : public ILogLayout
 	{
 	protected:
-		static constexpr const char* BracketLeft = "[";
-		static constexpr const char* BracketRight = "]";
+		
 	};
 }

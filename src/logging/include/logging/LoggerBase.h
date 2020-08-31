@@ -19,7 +19,7 @@ namespace Logging
 
 		bool isEnabled(std::shared_ptr<LogLevel> level) override;
 
-		ILogger& log(LogMessage message) override;
+		ILogger& log(LogMessage& message) override;
 
 		std::vector<std::shared_ptr<ILogLayout>> getLayouts();
 
@@ -30,8 +30,6 @@ namespace Logging
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 
 		virtual void write(const std::string message) = 0;
-
-
 	};
 
 }

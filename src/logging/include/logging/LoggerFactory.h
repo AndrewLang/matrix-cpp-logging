@@ -29,7 +29,7 @@ namespace Logging
 	private:
 		std::vector<std::shared_ptr<ILoggerProvider>> mProviders;
 
-		std::map<std::string, std::shared_ptr<InternalLogger>> mLoggers;
+		std::map<std::string, std::shared_ptr<InternalLogger>> loggers;
 				
 		std::shared_ptr<LoggerContext> context;
 	};

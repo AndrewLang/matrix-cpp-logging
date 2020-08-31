@@ -4,10 +4,10 @@
 
 namespace Logging
 {
-	LogMessage::LogMessage(std::shared_ptr<LogLevel> level, const std::string & name, const std::string & message, const std::string & timestamp, const int indent)
-		: mName(name), mMessage(message), mTimestamp(timestamp), mIndent(indent)
+	LogMessage::LogMessage(std::shared_ptr<LogLevel> logLevel, const std::string & name, const std::string & message, const std::string & timestamp, const int indent)
+		: name(name), message(message), timestamp(timestamp), indent(indent)
 	{
-		mLevel = level;
+		level = logLevel;
 	}
 
 	LogMessage::~LogMessage()
@@ -16,23 +16,23 @@ namespace Logging
 
     std::string LogMessage::getName() const
     {
-        return mName;
+        return name;
     }
     std::string LogMessage::getMessage() const
     {
-        return mMessage;
+        return message;
     }
     std::string LogMessage::getTimmestamp() const
     {
-        return mTimestamp;
+        return timestamp;
     }
     std::shared_ptr<LogLevel> LogMessage::getLevel() const
     {
-        return mLevel;
+        return level;
     }
     int LogMessage::getIndent() const
     {
-        return mIndent;
+        return indent;
     }
 
 	LogMessage LogMessage::debug(const std::string & name, const std::string & message, const std::string & timestamp, const int indent)

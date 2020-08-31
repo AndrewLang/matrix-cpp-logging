@@ -42,6 +42,7 @@ namespace Logging
 			logMessage(message);
 		}
 
+		/*Write message to VsOutput without prepend timestamp*/
 		template<typename ... Args >
 		static void writeLine(Args&& ... args)
 		{
@@ -53,7 +54,7 @@ namespace Logging
 		}
 
 		template<typename ... Args >
-		static void writeWithName(std::string name, Args&& ... args)
+		static void debugWithName(std::string name, Args&& ... args)
 		{
 			TextFormatter formatter;
 			auto message = StringExtensions::wrapBySquare(StringExtensions::getTimestamp())

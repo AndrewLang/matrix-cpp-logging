@@ -1,4 +1,3 @@
-#include "..\..\include\logging\BaseLoggerProvider.h"
 #include "logging/BaseLoggerProvider.h"
 #include "common/StringExtensions.h"
 
@@ -8,6 +7,7 @@ namespace Logging
 	{
 		context = loggerContext;
 	}
+
 	std::shared_ptr<LoggerConfig> BaseLoggerProvider::getConfig(const std::string & type)
 	{
 		std::shared_ptr<LoggerConfig> config;
@@ -24,6 +24,7 @@ namespace Logging
 
 		return config;
 	}
+
 	std::vector<std::shared_ptr<ILogLayout>> BaseLoggerProvider::getLayouts(std::shared_ptr<LoggerConfig> config)
 	{
 		std::vector<std::shared_ptr<ILogLayout>> layouts;

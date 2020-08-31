@@ -40,9 +40,9 @@ namespace Logging
 
 		watch.stop();
 
-		// VsOutput::writeWithName("Stopwatch", watch.elapsed());
-		// VsOutput::writeWithName("Stopwatch", watch.elapsedMilliseconds());
-		// VsOutput::writeWithName("Stopwatch", watch.format());
+		// VsOutput::debugWithName("Stopwatch", watch.elapsed());
+		// VsOutput::debugWithName("Stopwatch", watch.elapsedMilliseconds());
+		// VsOutput::debugWithName("Stopwatch", watch.format());
 
 		watch.reset();
 

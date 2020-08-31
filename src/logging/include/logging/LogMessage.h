@@ -8,14 +8,14 @@ namespace Logging
     class LogMessage
     {
     private:
-        std::string mName;
-        std::string mMessage;
-        std::string mTimestamp;
-        std::shared_ptr<LogLevel> mLevel;
-        int mIndent;
+        std::string name;
+        std::string message;
+        std::string timestamp;
+        std::shared_ptr<LogLevel> level;
+        int indent;
 
     public:
-        LogMessage(std::shared_ptr<LogLevel> level, const std::string& name, const std::string& message, const std::string& timestamp, const int intent = 0);
+        LogMessage(std::shared_ptr<LogLevel> logLevel, const std::string& loggerName, const std::string& messageBody, const std::string& timestamp, const int intent = 0);
         LogMessage() = delete;
         ~LogMessage();
 

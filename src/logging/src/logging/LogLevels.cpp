@@ -9,10 +9,12 @@ namespace Logging
 	{
 		initialize();
 	}
+
 	LogLevels::~LogLevels()
 	{
 		mLevels.clear();
 	}
+
 	void LogLevels::initialize()
 	{
 		add(All, 0)
