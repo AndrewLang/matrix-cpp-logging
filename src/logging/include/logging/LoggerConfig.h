@@ -14,6 +14,9 @@ namespace Logging
 		static constexpr const char* VsOutput = "vsoutput";
 	};
 
+	///<summary>
+	/// Configuration for a logger
+	///</summary>
 	class LoggerConfig
 	{
 	public:
@@ -23,14 +26,23 @@ namespace Logging
 		std::shared_ptr<LogLevel> level;
 	};
 
+	///<summary>
+	/// Configuration for color setting in console logger
+	///</summary>
 	class ColorConfig
 	{
 	public:
 		std::string level;
 		std::string foreColor;
 		std::string backColor;
+
+		ColorConfig();
+		ColorConfig(const std::string& level, const std::string& foreColor, const std::string& backColor = "");
 	};
 
+	///<summary>
+	/// Configuration for console logger
+	///</summary>
 	class ConsoleLoggerConfig : public LoggerConfig
 	{
 	public:
@@ -38,10 +50,20 @@ namespace Logging
 		std::vector<ColorConfig> colors;
 
 		ConsoleLoggerConfig();
+
+		ConsoleLoggerConfig& addColor(const std::string& level, const std::string& foreColor = "", const std::string& backColor = "");
+
+		static std::shared_ptr<ConsoleLoggerConfig> default();
+
+		static std::shared_ptr<ConsoleLoggerConfig> defaultWithColor();
 	private:
 
 	};
 
+
+	///<summary>
+	/// Configuration for file logger
+	///</summary>
 	class FileLoggerConfig : public LoggerConfig
 	{
 	public:

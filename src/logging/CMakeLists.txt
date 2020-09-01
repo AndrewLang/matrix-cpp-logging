@@ -21,7 +21,7 @@ include_directories(
 project(logging VERSION 0.0.1 )
 
 set(DEFAULT_BUILD_TYPE "Release")
-
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /doc")
 
 # add library definition
 add_library( ${PROJECT_NAME} SHARED ${SourceFiles} ${HeaderFiles})
