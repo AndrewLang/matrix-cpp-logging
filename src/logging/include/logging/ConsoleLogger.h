@@ -12,9 +12,9 @@ namespace Logging
 		ConsoleLogger(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel);
 		ConsoleLogger(const ConsoleLogger& logger);
 
-		~ConsoleLogger();
+		~ConsoleLogger();		
 
-		void configure(std::shared_ptr<ConsoleLoggerConfig> loggerConfig);
+		virtual void configure(std::shared_ptr<LoggerConfig> loggerConfig) override;
 
 	private:
 		std::shared_ptr<ConsoleLoggerConfig> loggerConfig;

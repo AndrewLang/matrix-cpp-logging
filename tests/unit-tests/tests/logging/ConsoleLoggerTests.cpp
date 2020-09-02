@@ -75,6 +75,29 @@ namespace Logging
 			.error("Jasoom error")
 			.fatal("Jasoom fatal");
 	}
+
+	TEST(ConsoleLoggerTests, Enable) {
+		auto config = ConsoleLoggerConfig::defaultWithColor();
+		config->isEnabled = false;
+
+		auto logger = createLogger();
+		logger.configure(config);
+
+		logger.debug("Message should not log into console.");
+	}
+
+	TEST(ConsoleLoggerTests, Minilevel) {
+		auto config = ConsoleLoggerConfig::defaultWithColor();
+		config->level = LogLevels::Default()->fatal();
+
+		auto logger = createLogger();
+		logger.configure(config);
+
+		logger.debug("Message should not log into console.")
+			.info("Message should not log into console.")
+			.warn("Message should not log into console.")
+			.error("Message should not log into console.");
+	}
 	TEST(ConsoleLoggerTests, ColorfulPrototype) {
 #if defined(_WIN32)
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

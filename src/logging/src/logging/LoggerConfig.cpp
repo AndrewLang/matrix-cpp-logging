@@ -38,6 +38,7 @@ namespace Logging
 	{
 		auto configure = std::make_shared<ConsoleLoggerConfig>();
 		configure->enableColor = true;
+		configure->level = LogLevels::Default()->all();
 
 		configure->addStyle(LogLevels::Debug)
 			.addStyle(LogLevels::Info, "47")

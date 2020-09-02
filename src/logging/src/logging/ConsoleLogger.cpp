@@ -39,9 +39,11 @@ namespace Logging
 
 	}
 
-	void ConsoleLogger::configure(std::shared_ptr<ConsoleLoggerConfig> config)
+	void ConsoleLogger::configure(std::shared_ptr<LoggerConfig> config)
 	{
-		loggerConfig = config;
+		LoggerBase::configure(config);
+
+		loggerConfig = std::static_pointer_cast<ConsoleLoggerConfig>(config);
 
 		if (loggerConfig && loggerConfig->enableColor)
 		{

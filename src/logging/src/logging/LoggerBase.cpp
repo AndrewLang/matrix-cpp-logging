@@ -29,7 +29,7 @@ namespace Logging
 
 	ILogger & LoggerBase::log(LogMessage& message)
 	{
-		if (isEnabled(message.getLevel()))
+		if (enabled && isEnabled(message.getLevel()))
 		{
 			std::vector<string> parts;
 			for (auto& item : layouts)
@@ -43,6 +43,17 @@ namespace Logging
 		}
 
 		return *this;
+	}
+
+	void LoggerBase::configure(std::shared_ptr<LoggerConfig> loggerConfig)
+	{
+		rawConfig = loggerConfig;
+		if (rawConfig)
+		{
+			enabled = rawConfig->isEnabled;
+			miniLevel = rawConfig->level;
+			layoutFormat = rawConfig->layout;
+		}
 	}
 
 	std::vector<std::shared_ptr<ILogLayout>> LoggerBase::getLayouts()
