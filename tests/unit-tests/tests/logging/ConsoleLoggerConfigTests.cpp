@@ -7,51 +7,53 @@ namespace Logging
 {
 	TEST(ColorConfigTests, Constructor)
 	{
-		ColorConfig config;
+		ConsoleStyleConfig configure;
 	}
 
 	TEST(ColorConfigTests, ConstructorWithValues)
 	{
-		ColorConfig config("Debug", "red", "yellow" );
+		ConsoleStyleConfig configure("Debug", "red", "yellow", "bold" );
 
-		EXPECT_EQ("Debug", config.level);
-		EXPECT_EQ("red", config.foreColor);
-		EXPECT_EQ("yellow", config.backColor);
+		EXPECT_EQ("Debug", configure.level);
+		EXPECT_EQ("red", configure.foreColor);
+		EXPECT_EQ("yellow", configure.backColor);
+		EXPECT_EQ("bold", configure.style);
 	}
 
 	TEST(ConsoleLoggerConfigTests, Constructor)
 	{
-		ConsoleLoggerConfig config;
+		ConsoleLoggerConfig configure;
 	}
 
 	TEST(ConsoleLoggerConfigTests, AddColors)
 	{
-		ConsoleLoggerConfig config;
+		ConsoleLoggerConfig configure;
 
-		config.addColor("Debug")
-			.addColor("Error", "red", "yellow")
+		configure.addStyle("Debug")
+			.addStyle("Error", "red", "yellow", "bold")
 			;
 
-		EXPECT_EQ(2, config.colors.size());
-		EXPECT_EQ("Debug", config.colors[0].level);
-		EXPECT_EQ("", config.colors[0].foreColor);
-		EXPECT_EQ("", config.colors[0].backColor);
+		EXPECT_EQ(2, configure.styles.size());
+		EXPECT_EQ("Debug", configure.styles[0].level);
+		EXPECT_EQ("", configure.styles[0].foreColor);
+		EXPECT_EQ("", configure.styles[0].backColor);
 
-		EXPECT_EQ("Error", config.colors[1].level);
-		EXPECT_EQ("red", config.colors[1].foreColor);
-		EXPECT_EQ("yellow", config.colors[1].backColor);
+		EXPECT_EQ("Error", configure.styles[1].level);
+		EXPECT_EQ("red", configure.styles[1].foreColor);
+		EXPECT_EQ("yellow", configure.styles[1].backColor);
+		EXPECT_EQ("bold", configure.styles[1].style);
 	}
 
 	TEST(ConsoleLoggerConfigTests, DefaultConfig)
 	{
-		auto config = ConsoleLoggerConfig::default();
-		EXPECT_FALSE(config->enableColor);
+		auto configure = ConsoleLoggerConfig::default();
+		EXPECT_FALSE(configure->enableColor);
 	}
 
 	TEST(ConsoleLoggerConfigTests, DefaultConfigWithColor)
 	{
-		auto config = ConsoleLoggerConfig::defaultWithColor();
+		auto configure = ConsoleLoggerConfig::defaultWithColor();
 
-		EXPECT_TRUE(config->enableColor);
+		EXPECT_TRUE(configure->enableColor);
 	}
 }

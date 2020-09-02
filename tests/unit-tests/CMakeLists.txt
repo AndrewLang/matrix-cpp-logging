@@ -46,6 +46,7 @@ set (SourceFiles
 	tests/logging/ConsoleLoggerProviderTests.cpp
 	tests/logging/ConsoleLoggerTests.cpp
 	tests/logging/ConfigurationTests.cpp
+	tests/logging/ConsoleColorRenderTests.cpp
 	tests/logging/InternalLoggerTests.cpp
 	tests/logging/ConsoleLoggerConfigTests.cpp
 	tests/logging/LoggerFactoryTests.cpp

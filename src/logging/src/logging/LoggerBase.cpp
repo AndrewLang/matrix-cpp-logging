@@ -37,8 +37,8 @@ namespace Logging
 				parts.push_back(item->layout(message));
 			}
 
-			string content = Vectors::join(parts, "");
-
+			string content = preWrite(message, Vectors::join(parts, ""));
+						
 			write(content);
 		}
 
@@ -53,6 +53,11 @@ namespace Logging
 	std::shared_ptr<LogLevel> LoggerBase::getMiniLevel()
 	{
 		return miniLevel;
+	}
+
+	std::string LoggerBase::preWrite(LogMessage & message, const std::string & text)
+	{
+		return text;
 	}
 
 }

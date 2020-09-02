@@ -29,15 +29,16 @@ namespace Logging
 	///<summary>
 	/// Configuration for color setting in console logger
 	///</summary>
-	class ColorConfig
+	class ConsoleStyleConfig
 	{
 	public:
 		std::string level;
 		std::string foreColor;
 		std::string backColor;
+		std::string style;
 
-		ColorConfig();
-		ColorConfig(const std::string& level, const std::string& foreColor, const std::string& backColor = "");
+		ConsoleStyleConfig();
+		ConsoleStyleConfig(const std::string& level, const std::string& foreColor, const std::string& backColor = "", const std::string& style = "");
 	};
 
 	///<summary>
@@ -47,11 +48,11 @@ namespace Logging
 	{
 	public:
 		bool enableColor;
-		std::vector<ColorConfig> colors;
+		std::vector<ConsoleStyleConfig> styles;
 
 		ConsoleLoggerConfig();
 
-		ConsoleLoggerConfig& addColor(const std::string& level, const std::string& foreColor = "", const std::string& backColor = "");
+		ConsoleLoggerConfig& addStyle(const std::string& level, const std::string& foreColor = "", const std::string& backColor = "", const std::string& style = "");
 
 		static std::shared_ptr<ConsoleLoggerConfig> default();
 

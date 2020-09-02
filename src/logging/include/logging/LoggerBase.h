@@ -30,6 +30,8 @@ namespace Logging
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 
 		virtual void write(const std::string message) = 0;
+
+		virtual std::string preWrite(LogMessage& message, const std::string& text);
 	};
 
 }

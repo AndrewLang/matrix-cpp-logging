@@ -14,6 +14,17 @@ namespace Logging
 		
 		std::shared_ptr<LoggerConfig> getConfig(const std::string& type = "");
 
-		std::vector<std::shared_ptr<ILogLayout>> getLayouts(std::shared_ptr<LoggerConfig> config);
+		std::vector<std::shared_ptr<ILogLayout>> getLayouts(std::shared_ptr<LoggerConfig> configure);
+
+		template<class T>
+		std::shared_ptr<T> getConfiguration(const std::string& type = "")
+		{
+			auto configure = getConfig(type);
+			if (configure)
+			{
+				return std::static_pointer_cast<T>(configure);
+			}
+			return nullptr;
+		}
 	};
 }

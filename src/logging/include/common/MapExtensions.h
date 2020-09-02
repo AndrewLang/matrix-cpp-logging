@@ -18,6 +18,13 @@ namespace Logging
 			}
 			return defaultValue;
 		}
+
+		template<typename TKey, typename TValue>
+		static bool contains(std::map<TKey, TValue> map, TKey key)
+		{
+			auto iterator = map.find(key);
+			return iterator != map.end();
+		}
 	};
 
 	using Maps = MapExtensions;

@@ -52,7 +52,7 @@ namespace Logging
 		EXPECT_EQ("Info", actual->level->getName());
 		EXPECT_TRUE(actual->isEnabled);
 		EXPECT_TRUE(actual->enableColor);
-		EXPECT_EQ(0, actual->colors.size());
+		EXPECT_EQ(0, actual->styles.size());
 
 	}
 }

@@ -77,7 +77,7 @@ namespace Logging
 		}
 #endif	
 
-		// foreground colors
+		// foreground styles
 		std::cout << std::endl << "Foreground 256 color" << std::endl;
 		for (int i = 0; i <= 256; i++) {
 			std::cout << "\033[38;5;" << i << "m" << "Color: " << i << "\033[0m" << "\t";
@@ -87,7 +87,7 @@ namespace Logging
 		}
 		std::cout << std::endl;
 
-		// background colors
+		// background styles
 		std::cout << std::endl << "Background 256 color" << std::endl;
 		for (int i = 0; i <= 256; i++) {
 			std::cout << "\033[48;5;" << i << "m" << "Color: " << i << "\033[0m" << "\t";
@@ -113,11 +113,19 @@ namespace Logging
 		writeLine("");
 		writeLine("Combine Styles");
 		writeLine("");
+		writeLine("\033[38;5;245;48;5;4;1;4;7m Combined styles with 256 colors, bold, underline\033[0m");
 		writeLine("\033[38;5;245;48;5;24m Combined styles with 256 colors\033[0m");
 		writeLine("\033[38;5;46;48;5;234;1m Combined styles with 256 colors\033[0m");
 		writeLine("\033[38;5;226;48;5;198;4m Combined styles with 256 colors\033[0m");
 		writeLine("\033[38;5;166;48;5;232;1;4m Combined styles with 256 colors\033[0m");
 		writeLine("\033[38;5;196;7m Combined styles with 256 colors\033[0m");
+
+		writeLine("");
+		writeLine("\x1B[mJasoom\x1B[m");
+		writeLine("\x1B[38;5;46mJasoom\x1B[m");
+		writeLine("\x1B[38;5;226mJasoom\x1B[m");
+		writeLine("\x1B[38;5;226;48;5;124;1mJasoom\x1B[m");
+		writeLine("\x1B[38;5;124;1;4mJasoom\x1B[m");
 	}
 
 }

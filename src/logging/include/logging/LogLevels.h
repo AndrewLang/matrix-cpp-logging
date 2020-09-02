@@ -8,6 +8,13 @@ namespace Logging
 	class LogLevels
 	{
 	private:
+		
+		
+		std::map<std::string, std::shared_ptr<LogLevel>> mLevels;
+
+		
+		void initialize();
+	public:
 		static constexpr const char* All = "All";
 		static constexpr const char* Debug = "Debug";
 		static constexpr const char* Info = "Info";
@@ -15,12 +22,6 @@ namespace Logging
 		static constexpr const char* Error = "Error";
 		static constexpr const char* Fatal = "Fatal";
 		static constexpr const char* None = "None";
-		
-		std::map<std::string, std::shared_ptr<LogLevel>> mLevels;
-
-		
-		void initialize();
-	public:
 
 		LogLevels();
 

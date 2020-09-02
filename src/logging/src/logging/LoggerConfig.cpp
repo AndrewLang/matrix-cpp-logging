@@ -4,12 +4,12 @@
 
 namespace Logging
 {
-	ColorConfig::ColorConfig()
+	ConsoleStyleConfig::ConsoleStyleConfig()
 	{
 	}
 
-	ColorConfig::ColorConfig(const std::string & level, const std::string & foreColor, const std::string & backColor)
-		:level(level), foreColor(foreColor), backColor(backColor)
+	ConsoleStyleConfig::ConsoleStyleConfig(const std::string & level, const std::string & foreColor, const std::string & backColor, const std::string& style)
+		:level(level), foreColor(foreColor), backColor(backColor), style(style)
 	{
 	}
 
@@ -19,33 +19,33 @@ namespace Logging
 		enableColor = false;
 	}
 
-	ConsoleLoggerConfig & ConsoleLoggerConfig::addColor(const std::string & level, const std::string & foreColor, const std::string & backColor)
+	ConsoleLoggerConfig & ConsoleLoggerConfig::addStyle(const std::string & level, const std::string & foreColor, const std::string & backColor, const std::string& style)
 	{
-		ColorConfig config(level, foreColor, backColor);
-		colors.push_back(config);
+		ConsoleStyleConfig configure(level, foreColor, backColor, style);
+		styles.push_back(configure);
 
 		return *this;
 	}
 
 	std::shared_ptr<ConsoleLoggerConfig> ConsoleLoggerConfig::default()
 	{
-		auto config = std::make_shared<ConsoleLoggerConfig>();
+		auto configure = std::make_shared<ConsoleLoggerConfig>();
 
-		return config;
+		return configure;
 	}
 
 	std::shared_ptr<ConsoleLoggerConfig> ConsoleLoggerConfig::defaultWithColor()
 	{
-		auto config = std::make_shared<ConsoleLoggerConfig>();
-		config->enableColor = true;
+		auto configure = std::make_shared<ConsoleLoggerConfig>();
+		configure->enableColor = true;
 
-		config->addColor(LogLevels::Default()->debug()->getName())
-			.addColor(LogLevels::Default()->info()->getName(), "green")
-			.addColor(LogLevels::Default()->warn()->getName(), "yellow")
-			.addColor(LogLevels::Default()->error()->getName(), "purple")
-			.addColor(LogLevels::Default()->fatal()->getName(), "red")
+		configure->addStyle(LogLevels::Default()->debug()->getName())
+			.addStyle(LogLevels::Default()->info()->getName(), "green")
+			.addStyle(LogLevels::Default()->warn()->getName(), "yellow")
+			.addStyle(LogLevels::Default()->error()->getName(), "purple")
+			.addStyle(LogLevels::Default()->fatal()->getName(), "red")
 			;
-		return config;
+		return configure;
 	}
 
 	FileLoggerConfig::FileLoggerConfig()

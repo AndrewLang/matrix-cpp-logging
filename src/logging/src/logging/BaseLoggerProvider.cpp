@@ -10,7 +10,7 @@ namespace Logging
 
 	std::shared_ptr<LoggerConfig> BaseLoggerProvider::getConfig(const std::string & type)
 	{
-		std::shared_ptr<LoggerConfig> config;
+		std::shared_ptr<LoggerConfig> configure;
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 		std::string configType = type;
 
@@ -19,18 +19,18 @@ namespace Logging
 
 		if (Strings::notNullOrEmpty(configType))
 		{
-			config = context->configuration->getConfig(configType);
+			configure = context->configuration->getConfig(configType);
 		}
 
-		return config;
+		return configure;
 	}
 
-	std::vector<std::shared_ptr<ILogLayout>> BaseLoggerProvider::getLayouts(std::shared_ptr<LoggerConfig> config)
+	std::vector<std::shared_ptr<ILogLayout>> BaseLoggerProvider::getLayouts(std::shared_ptr<LoggerConfig> configure)
 	{
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 
-		if (config != nullptr)
-			layouts = context->layoutRepo->parse(config->layout);
+		if (configure != nullptr)
+			layouts = context->layoutRepo->parse(configure->layout);
 
 		return layouts;
 	}

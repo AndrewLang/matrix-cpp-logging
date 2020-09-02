@@ -15,10 +15,13 @@ namespace Logging
 
 	std::shared_ptr<ILogger> ConsoleLoggerProvider::createLogger(const std::string& name)
 	{
-		auto config = getConfig();
-		auto layouts = getLayouts(config);
+		auto configure = getConfiguration<ConsoleLoggerConfig>();
+		auto layouts = getLayouts(configure);
 		
-		return std::make_shared<ConsoleLogger>(name, layouts, config->level);
+		auto logger = std::make_shared<ConsoleLogger>(name, layouts, configure->level);
+		logger->configure(configure);
+
+		return logger;
 	}
 
 }

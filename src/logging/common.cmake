@@ -21,6 +21,7 @@ SET(HeaderFiles
 	include/logging/ConsoleLogger.h
 	include/logging/ConsoleLoggerProvider.h
 	include/logging/Configuration.h
+	include/logging/ConsoleColorRender.h
 	include/logging/LoggerConfig.h
 	include/logging/ILogger.h
 	include/logging/ILoggerFactory.h
@@ -66,6 +67,7 @@ SET(SourceFiles
 	src/logging/ConsoleLogger.cpp
 	src/logging/ConsoleLoggerProvider.cpp
 	src/logging/Configuration.cpp
+	src/logging/ConsoleColorRender.cpp
 	src/logging/LoggerConfig.cpp
 	src/logging/InternalLogger.cpp
 	src/logging/LoggerContext.cpp
