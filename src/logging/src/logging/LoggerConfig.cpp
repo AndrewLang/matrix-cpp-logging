@@ -39,11 +39,11 @@ namespace Logging
 		auto configure = std::make_shared<ConsoleLoggerConfig>();
 		configure->enableColor = true;
 
-		configure->addStyle(LogLevels::Default()->debug()->getName())
-			.addStyle(LogLevels::Default()->info()->getName(), "green")
-			.addStyle(LogLevels::Default()->warn()->getName(), "yellow")
-			.addStyle(LogLevels::Default()->error()->getName(), "purple")
-			.addStyle(LogLevels::Default()->fatal()->getName(), "red")
+		configure->addStyle(LogLevels::Debug)
+			.addStyle(LogLevels::Info, "47")
+			.addStyle(LogLevels::Warn, "226")
+			.addStyle(LogLevels::Error, "124", "", "bold")
+			.addStyle(LogLevels::Fatal, "226", "124", "underline")
 			;
 		return configure;
 	}

@@ -37,7 +37,7 @@ namespace Logging
 		}
 
 		template< typename ... Args >
-		ILogger& warning(Args ... args)
+		ILogger& warn(Args ... args)
 		{
 			auto content = buildMessage(args...);
 			auto message = LogMessage::warn(name, content);

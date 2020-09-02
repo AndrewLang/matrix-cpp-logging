@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "logging/ConsoleLogger.h"
 #include "logging/LogLevels.h"
+#include "logging/LogLayoutRepository.h"
 
 #if defined(_WIN32)
 #include <Windows.h>
@@ -10,12 +11,15 @@
 namespace Logging
 {
 	ConsoleLogger createLogger(const std::string & name = "test") {
-		std::vector<std::shared_ptr<ILogLayout>> layouts;
+		LogLayoutRepository repo;
+		repo.initialize();
+
+		auto layouts = repo.parse("{timestamp} {level} {name}: {message}");
+
 		ConsoleLogger logger(name, layouts, LogLevels::Default()->all());
 
 		return logger;
 	}
-
 
 	void writeLine(const std::string& line)
 	{
@@ -37,7 +41,7 @@ namespace Logging
 			.error("This is an error message")
 			.fatal("This is fatal message")
 			.info("This is info message")
-			.warning("This is warning message");
+			.warn("This is warning message");
 	}
 
 	TEST(ConsoleLoggerTests, LogMessageWithFormatter) {
@@ -60,6 +64,17 @@ namespace Logging
 			.info("title", "4. this is a test");
 	}
 
+	TEST(ConsoleLoggerTests, LogWithStyleSetting) {
+		auto config = ConsoleLoggerConfig::defaultWithColor();
+		auto logger = createLogger();
+		logger.configure(config);
+
+		logger.debug("Jasoom debug")
+			.info("Jasoom info")
+			.warn("Jasoom warn")
+			.error("Jasoom error")
+			.fatal("Jasoom fatal");
+	}
 	TEST(ConsoleLoggerTests, ColorfulPrototype) {
 #if defined(_WIN32)
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

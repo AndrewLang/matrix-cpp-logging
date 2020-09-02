@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "gtest/gtest.h"
 #include "logging/LoggerConfig.h"
-
+#include "logging/LogLevels.h"
+#include "common/VectorExtensions.h"
 
 namespace Logging
 {
@@ -52,8 +53,33 @@ namespace Logging
 
 	TEST(ConsoleLoggerConfigTests, DefaultConfigWithColor)
 	{
-		auto configure = ConsoleLoggerConfig::defaultWithColor();
+		auto config = ConsoleLoggerConfig::defaultWithColor();
 
-		EXPECT_TRUE(configure->enableColor);
+		EXPECT_TRUE(config->enableColor);
+
+		auto actual = Vectors::firstOrDefault<ConsoleStyleConfig>(config->styles, [](ConsoleStyleConfig x) {return x.level == LogLevels::Debug; });
+		EXPECT_EQ("", actual.foreColor);
+		EXPECT_EQ("", actual.backColor);
+		EXPECT_EQ("", actual.style);
+
+		actual = Vectors::firstOrDefault<ConsoleStyleConfig>(config->styles, [](ConsoleStyleConfig x) {return x.level == LogLevels::Info; });
+		EXPECT_EQ("47", actual.foreColor);
+		EXPECT_EQ("", actual.backColor);
+		EXPECT_EQ("", actual.style);
+
+		actual = Vectors::firstOrDefault<ConsoleStyleConfig>(config->styles, [](ConsoleStyleConfig x) {return x.level == LogLevels::Warn; });
+		EXPECT_EQ("226", actual.foreColor);
+		EXPECT_EQ("", actual.backColor);
+		EXPECT_EQ("", actual.style);
+
+		actual = Vectors::firstOrDefault<ConsoleStyleConfig>(config->styles, [](ConsoleStyleConfig x) {return x.level == LogLevels::Error; });
+		EXPECT_EQ("124", actual.foreColor);
+		EXPECT_EQ("", actual.backColor);
+		EXPECT_EQ("bold", actual.style);
+
+		actual = Vectors::firstOrDefault<ConsoleStyleConfig>(config->styles, [](ConsoleStyleConfig x) {return x.level == LogLevels::Fatal; });
+		EXPECT_EQ("226", actual.foreColor);
+		EXPECT_EQ("124", actual.backColor);
+		EXPECT_EQ("underline", actual.style);
 	}
 }

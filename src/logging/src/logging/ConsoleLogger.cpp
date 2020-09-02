@@ -6,6 +6,11 @@
 #include <sstream>
 #include <chrono>
 
+#if defined(_WIN32)
+#include <Windows.h>
+#endif
+
+
 using namespace std;
 using namespace std::chrono;
 
@@ -42,6 +47,14 @@ namespace Logging
 		{
 			renderer = std::make_shared<ConsoleColorRenderer>();
 			renderer->initialize(loggerConfig);
+
+#if defined(_WIN32)
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			DWORD consoleMode;
+			GetConsoleMode(hConsole, &consoleMode);
+			consoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+			SetConsoleMode(hConsole, consoleMode);
+#endif	
 		}
 	}
 

@@ -35,7 +35,7 @@ namespace Logging
 			.error("this is error")
 			.fatal("this is fatal")
 			.info("this is info")			
-			.warning("this is warning");
+			.warn("this is warning");
 	}
 
 	TEST(VsOutputLoggerTests, LogWithGroup)
@@ -49,7 +49,7 @@ namespace Logging
 			.error("this is error")
 			.fatal("this is fatal")
 			.info("this is info")
-			.warning("this is warning")
+			.warn("this is warning")
 			;
 	}
 
