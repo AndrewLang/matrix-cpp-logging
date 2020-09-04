@@ -4,6 +4,8 @@
 #include "logging/LoggerFactory.h"
 #include "logging/ILoggerFactory.h"
 #include "logging/ConsoleLoggerProvider.h"
+#include "logging/VsOutputLoggerProvider.h"
+#include "logging/LogLevels.h"
 
 #include <vector>
 
@@ -14,6 +16,7 @@ namespace Logging
 	{
 		auto factory = std::make_shared<LoggerFactory>();
 	}
+	
 	TEST(LoggerFactoryTests, AddProvider)
 	{
 		LoggerFactory factory;
@@ -26,6 +29,7 @@ namespace Logging
 
 		ASSERT_EQ(1, providers.size());
 	}
+	
 	TEST(LoggerFactoryTests, AddGenericProvider)
 	{
 		LoggerFactory factory;
@@ -37,7 +41,7 @@ namespace Logging
 		ASSERT_EQ(1, providers.size());
 	}
 
-	TEST(LoggerFactoryTests, CreateLoggerByPointer)
+	TEST(LoggerFactoryTests, CreateLoggerWithPointer)
 	{
 		auto configuration = std::make_shared<Configuration>();
 		auto factory = std::make_shared<LoggerFactory>();
@@ -57,7 +61,8 @@ namespace Logging
 
 		ASSERT_EQ("test", logger->name);
 	}
-	TEST(LoggerFactoryTests, CreateLoggerByInstance)
+
+	TEST(LoggerFactoryTests, CreateLoggersWithReference)
 	{
 		EXPECT_ANY_THROW(
 			{
@@ -78,4 +83,36 @@ namespace Logging
 
 	}
 
+	TEST(LoggerFactoryTests, CreateLoggerWithConfiguration)
+	{
+		auto configuration = std::make_shared<Configuration>();
+
+		auto consoleConfig = ConsoleLoggerConfig::defaultWithColor(); 
+		
+		auto vsConfig = std::make_shared<LoggerConfig>();
+		vsConfig->isEnabled = true;
+		vsConfig->type = LoggerConfigTypes::VsOutput;
+		vsConfig->layout = "{timestamp} {level} {name}: {message}";
+
+		configuration->addConfig(consoleConfig)
+			.addConfig(vsConfig);
+
+
+		auto factory = std::make_shared<LoggerFactory>();
+		factory->configure(configuration);
+		factory->useProvider<ConsoleLoggerProvider>()
+			.useProvider<VsOutputLoggerProvider>();
+
+		
+		auto logger = factory->createLogger("jasoom");
+		auto internalLogger = std::static_pointer_cast<InternalLogger>(logger);
+
+		ASSERT_EQ("jasoom", logger->name);
+
+		ASSERT_NE(nullptr, internalLogger);
+		ASSERT_TRUE(internalLogger->isEnabled(LogLevels::Default()->debug()));
+		ASSERT_EQ(2, internalLogger->getLoggers().size());
+
+		logger->debug("This is Jasoom");
+	}
 }

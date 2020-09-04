@@ -17,7 +17,7 @@ namespace Logging
 
 		~LoggerFactory();
 
-		std::shared_ptr<ILogger> createLogger(std::string name) override;
+		std::shared_ptr<ILogger> createLogger(const std::string& name) override;
 
 		void addProvider(std::shared_ptr<ILoggerProvider> provider) override;
 

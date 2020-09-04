@@ -14,7 +14,7 @@ namespace Logging
 	class ILoggerFactory
 	{
 	public:
-		virtual std::shared_ptr<ILogger> createLogger(std::string name) = 0;
+		virtual std::shared_ptr<ILogger> createLogger(const std::string& name) = 0;
 
 		virtual void addProvider(std::shared_ptr<ILoggerProvider> provider) = 0;
 

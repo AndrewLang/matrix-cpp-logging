@@ -29,24 +29,30 @@ namespace Logging
 
 	std::shared_ptr<ConsoleLoggerConfig> ConsoleLoggerConfig::default()
 	{
-		auto configure = std::make_shared<ConsoleLoggerConfig>();
+		auto config = std::make_shared<ConsoleLoggerConfig>();
+		config->level = LogLevels::Default()->all();
+		config->type = LoggerConfigTypes::Console;
+		config->layout = "{timestamp} {level} {name}: {message}";
 
-		return configure;
+		return config;
 	}
 
 	std::shared_ptr<ConsoleLoggerConfig> ConsoleLoggerConfig::defaultWithColor()
 	{
-		auto configure = std::make_shared<ConsoleLoggerConfig>();
-		configure->enableColor = true;
-		configure->level = LogLevels::Default()->all();
+		auto config = std::make_shared<ConsoleLoggerConfig>();
+		config->enableColor = true;
+		config->isEnabled = true;
+		config->level = LogLevels::Default()->all();
+		config->type = LoggerConfigTypes::Console;
+		config->layout = "{timestamp} {level} {name}: {message}";
 
-		configure->addStyle(LogLevels::Debug)
+		config->addStyle(LogLevels::Debug)
 			.addStyle(LogLevels::Info, "47")
 			.addStyle(LogLevels::Warn, "226")
 			.addStyle(LogLevels::Error, "124", "", "bold")
 			.addStyle(LogLevels::Fatal, "226", "124", "underline")
 			;
-		return configure;
+		return config;
 	}
 
 	FileLoggerConfig::FileLoggerConfig()

@@ -24,6 +24,9 @@ namespace Logging
 
 	bool Logging::LoggerBase::isEnabled(std::shared_ptr<LogLevel> level)
 	{
+		if (!miniLevel)
+			return true;
+
 		return level->getValue() > miniLevel->getValue();
 	}
 

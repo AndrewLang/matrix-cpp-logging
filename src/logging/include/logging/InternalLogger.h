@@ -12,7 +12,7 @@ namespace Logging
 	class InternalLogger : public ILogger
 	{
 	public:
-		InternalLogger(std::shared_ptr<ILoggerFactory> factory, std::string& name);
+		InternalLogger(std::shared_ptr<ILoggerFactory> factory, const std::string& name);
 
 		InternalLogger() = delete;
 
@@ -27,6 +27,8 @@ namespace Logging
 		void addProvider(std::shared_ptr<ILoggerProvider> provider);
 
 		virtual ILogger& log(LogMessage& message) override;
+
+		std::vector<std::shared_ptr<ILogger>> getLoggers();
 
 	private:
 		std::shared_ptr<ILoggerFactory> factory;

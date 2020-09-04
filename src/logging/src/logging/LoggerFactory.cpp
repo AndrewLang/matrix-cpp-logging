@@ -13,19 +13,19 @@ namespace Logging
 		loggers.clear();
 	}
 
-	std::shared_ptr<ILogger> LoggerFactory::createLogger(std::string name)
+	std::shared_ptr<ILogger> LoggerFactory::createLogger(const std::string& name)
 	{
 		auto finder = loggers.find(name);
 
 		if (finder == loggers.end()) 
 		{
-			auto pointer = shared_from_this();
+			auto factory = shared_from_this();
 
-			auto loggerPtr = std::make_shared<InternalLogger>(pointer, name);
+			auto logger = std::make_shared<InternalLogger>(factory, name);
 
-			loggers.insert(std::make_pair(name, loggerPtr));
+			loggers.insert(std::make_pair(name, logger));
 
-			return loggerPtr;
+			return logger;
 		}
 		else
 		{
