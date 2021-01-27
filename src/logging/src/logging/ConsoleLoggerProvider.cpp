@@ -6,7 +6,7 @@ namespace Logging
 {
 	ConsoleLoggerProvider::ConsoleLoggerProvider()
 	{
-		configurationType = LoggerConfigTypes::Console;
+		setConfigurationType(LoggerConfigTypes::Console);
 	}
 
 	ConsoleLoggerProvider::~ConsoleLoggerProvider()

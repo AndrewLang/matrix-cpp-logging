@@ -15,7 +15,6 @@ namespace Logging
 	class ILogger
 	{
 	public:
-		std::string name;
 
 		virtual ~ILogger() = default;
 
@@ -23,11 +22,15 @@ namespace Logging
 
 		virtual ILogger& log(LogMessage& message) = 0;
 
+		virtual std::string getName() = 0;
+
+		virtual void setName(const std::string value) = 0;
+
 		template< typename ... Args >
 		ILogger& debug(Args ... args)
 		{			
 			auto content = buildMessage(args...);
-			auto message = LogMessage::debug(name, content);
+			auto message = LogMessage::debug(getName(), content);
 			return log(message);
 		}
 		
@@ -35,7 +38,7 @@ namespace Logging
 		ILogger& info(Args ... args)
 		{
 			auto content = buildMessage(args...);
-			auto message = LogMessage::info(name, content);
+			auto message = LogMessage::info(getName(), content);
 			return log(message);
 		}
 
@@ -43,7 +46,7 @@ namespace Logging
 		ILogger& warn(Args ... args)
 		{
 			auto content = buildMessage(args...);
-			auto message = LogMessage::warn(name, content);
+			auto message = LogMessage::warn(getName(), content);
 			return log(message);
 		}
 
@@ -51,7 +54,7 @@ namespace Logging
 		ILogger& error(Args ... args)
 		{
 			auto content = buildMessage(args...);
-			auto message = LogMessage::error(name, content);
+			auto message = LogMessage::error(getName(), content);
 			return log(message);
 		}
 
@@ -59,7 +62,7 @@ namespace Logging
 		ILogger& fatal(Args ... args)
 		{			
 			auto content = buildMessage(args...);
-			auto message = LogMessage::fatal(name, content);
+			auto message = LogMessage::fatal(getName(), content);
 			return log(message);
 		}
 

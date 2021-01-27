@@ -26,6 +26,13 @@ namespace Logging
 			.add(None, 99999);
 
 	}
+
+	std::shared_ptr<LogLevels> LogLevels::Default()
+	{
+		static std::shared_ptr<LogLevels> instance = std::make_shared<LogLevels>();
+
+		return instance;
+	}
 	
 	std::shared_ptr<LogLevel> LogLevels::all()
 	{

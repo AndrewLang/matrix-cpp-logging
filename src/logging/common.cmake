@@ -78,6 +78,7 @@ SET(SourceFiles
 	src/logging/LoggerContext.cpp
 	src/logging/LoggerBase.cpp
 	src/logging/LoggerFactory.cpp
+	src/logging/LogLayout.cpp
 	src/logging/LogLevel.cpp
 	src/logging/LogLevels.cpp
 	src/logging/LogMessage.cpp	

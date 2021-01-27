@@ -5,11 +5,6 @@ namespace Logging
 {
 	class LogLevel
 	{
-	private:
-		std::string name;
-		std::string alias;
-		int value;
-
 	public:
 		LogLevel(const std::string name, const int value);
 
@@ -26,6 +21,11 @@ namespace Logging
 		int getValue();
 
 		LogLevel& setAlias(const std::string& value);
+
+	private:
+		std::string mName;
+		std::string mAlias;
+		int mValue;
 	};
 
 } // namespace Logging

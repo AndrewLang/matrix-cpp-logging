@@ -5,7 +5,7 @@
 
 namespace Logging 
 {
-    LogTimestampLayout::LogTimestampLayout(/* args */)
+    LogTimestampLayout::LogTimestampLayout()
     {
     }
 

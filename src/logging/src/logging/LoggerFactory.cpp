@@ -10,20 +10,20 @@ namespace Logging
 	LoggerFactory::~LoggerFactory()
 	{
 		mProviders.clear();
-		loggers.clear();
+		mLoggers.clear();
 	}
 
 	std::shared_ptr<ILogger> LoggerFactory::createLogger(const std::string& name)
 	{
-		auto finder = loggers.find(name);
+		auto finder = mLoggers.find(name);
 
-		if (finder == loggers.end()) 
+		if (finder == mLoggers.end()) 
 		{
 			auto factory = shared_from_this();
 
 			auto logger = std::make_shared<InternalLogger>(factory, name);
 
-			loggers.insert(std::make_pair(name, logger));
+			mLoggers.insert(std::make_pair(name, logger));
 
 			return logger;
 		}
@@ -37,10 +37,10 @@ namespace Logging
 	{
 		if (provider)
 		{
-			provider->configure(context);
+			provider->configure(mContext);
 			mProviders.push_back(provider);
 
-			for (auto &pair : loggers)
+			for (auto &pair : mLoggers)
 			{
 				pair.second->addProvider(provider);
 			}
@@ -59,10 +59,10 @@ namespace Logging
 			auto layoutRepo = std::make_shared<LogLayoutRepository>();
 			layoutRepo->initialize();
 
-			context = std::make_shared<LoggerContext>();
-			context->factory = shared_from_this();
-			context->layoutRepo = layoutRepo;
-			context->configuration = configuration;
+			mContext = std::make_shared<LoggerContext>();
+			mContext->factory = shared_from_this();
+			mContext->layoutRepo = layoutRepo;
+			mContext->configuration = configuration;
 		}
 
 		return *this;
@@ -70,6 +70,6 @@ namespace Logging
 
 	std::shared_ptr<LoggerContext> LoggerFactory::getContext()
 	{
-		return context;
+		return mContext;
 	}
 }

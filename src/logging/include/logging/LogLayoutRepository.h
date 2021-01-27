@@ -1,7 +1,7 @@
 #pragma once
 
-
 #include "LogLayout.h"
+
 #include <map>
 #include <functional>
 #include <queue> 
@@ -38,10 +38,10 @@ namespace Logging
 
 		std::shared_ptr<ILogLayout> get(const std::string& name);
 
-		std::vector<std::shared_ptr<ILogLayout>> parse(const std::string&  format);
+		std::vector<std::shared_ptr<ILogLayout>> parse(const std::string& format);
 
 	private:
-		std::map<std::string, LogLayoutCreator> creators;
+		std::map<std::string, LogLayoutCreator> mCreators;
 
 		std::string toString(std::queue<char>& chars);
 	};

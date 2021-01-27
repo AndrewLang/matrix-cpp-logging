@@ -6,9 +6,9 @@ namespace Logging
 {
 	VsOutputLoggerProvider::VsOutputLoggerProvider()
 	{
-		configurationType = LoggerConfigTypes::VsOutput;
+		setConfigurationType(LoggerConfigTypes::VsOutput);
 	}
-	
+
 	VsOutputLoggerProvider::~VsOutputLoggerProvider()
 	{
 	}

@@ -14,7 +14,7 @@ namespace Logging
 	{
 	}
 
-	void VsOutputLogger::write(std::string message)
+	void VsOutputLogger::write(const std::string message)
 	{
 		VsOutput::writeLine(message);
 	}

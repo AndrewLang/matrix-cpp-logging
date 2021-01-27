@@ -13,9 +13,9 @@ namespace Logging
 
 	LoggerBase::LoggerBase(const std::string& loggerName, std::vector<std::shared_ptr<ILogLayout>> loggerLayouts, std::shared_ptr<LogLevel> loggerMiniLevel)
 	{
-		name = loggerName;
-		layouts = loggerLayouts;
-		miniLevel = loggerMiniLevel ? loggerMiniLevel: LogLevels::Default()->all();		
+		mName = loggerName;
+		mLayouts = loggerLayouts;
+		mMiniLevel = loggerMiniLevel ? loggerMiniLevel: LogLevels::Default()->all();		
 	}
 	   
 	LoggerBase::~LoggerBase()
@@ -24,18 +24,18 @@ namespace Logging
 
 	bool Logging::LoggerBase::isEnabled(std::shared_ptr<LogLevel> level)
 	{
-		if (!miniLevel)
+		if (!mMiniLevel)
 			return true;
 
-		return level->getValue() > miniLevel->getValue();
+		return level->getValue() > mMiniLevel->getValue();
 	}
 
 	ILogger & LoggerBase::log(LogMessage& message)
 	{
-		if (enabled && isEnabled(message.getLevel()))
+		if (mEnabled && isEnabled(message.getLevel()))
 		{
 			std::vector<string> parts;
-			for (auto& item : layouts)
+			for (auto& item : mLayouts)
 			{
 				parts.push_back(item->layout(message));
 			}
@@ -53,20 +53,20 @@ namespace Logging
 		rawConfig = loggerConfig;
 		if (rawConfig)
 		{
-			enabled = rawConfig->isEnabled;
-			miniLevel = rawConfig->level;
-			layoutFormat = rawConfig->layout;
+			mEnabled = rawConfig->isEnabled;
+			mMiniLevel = rawConfig->level;
+			mLayoutFormat = rawConfig->layout;
 		}
 	}
 
 	std::vector<std::shared_ptr<ILogLayout>> LoggerBase::getLayouts()
 	{
-		return layouts;
+		return mLayouts;
 	}
 
 	std::shared_ptr<LogLevel> LoggerBase::getMiniLevel()
 	{
-		return miniLevel;
+		return mMiniLevel;
 	}
 
 	std::string LoggerBase::preWrite(LogMessage & message, const std::string & text)
@@ -74,4 +74,13 @@ namespace Logging
 		return text;
 	}
 
+	std::string LoggerBase::getName()
+	{
+		return mName;
+	}
+
+	void LoggerBase::setName(const std::string value)
+	{
+		mName = value;
+	}
 }

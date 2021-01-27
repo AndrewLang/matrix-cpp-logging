@@ -14,7 +14,7 @@ namespace Logging
 		virtual std::string layout(const LogMessage& message) override;
 
 	private:
-		std::string content;
+		std::string mContent;
 	};
 
 }

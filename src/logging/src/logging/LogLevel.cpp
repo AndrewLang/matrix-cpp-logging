@@ -3,14 +3,16 @@
 namespace Logging
 {
 	LogLevel::LogLevel(const std::string levelName, const int value)
-		:name(levelName), value(value)
+		:mName(levelName)
+		, mValue(value)
 	{
 	}
 
 	LogLevel::LogLevel(const LogLevel& level) 
 	{
-		name = level.name;
-		value = level.value;
+		mName = level.mName;
+		mValue = level.mValue;
+		mAlias = level.mAlias;
 	}
 
 	LogLevel::~LogLevel()
@@ -19,22 +21,22 @@ namespace Logging
 
 	std::string LogLevel::getName() 
 	{
-		return name;
+		return mName;
 	}
 
 	std::string LogLevel::getAlias()
 	{
-		return alias;
+		return mAlias;
 	}
 
 	int LogLevel::getValue()
 	{
-		return value;
+		return mValue;
 	}
 
 	LogLevel & LogLevel::setAlias(const std::string& value)
 	{
-		alias = value;
+		mAlias = value;
 		return *this;
 	}
 

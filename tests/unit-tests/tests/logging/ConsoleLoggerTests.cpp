@@ -3,6 +3,7 @@
 #include "logging/ConsoleLogger.h"
 #include "logging/LogLevels.h"
 #include "logging/LogLayoutRepository.h"
+#include "common/Consts.h"
 
 #if defined(_WIN32)
 #include <Windows.h>
@@ -29,13 +30,13 @@ namespace Logging
 	TEST(ConsoleLoggerTests, Constructor) {
 		auto logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 	}
 
 	TEST(ConsoleLoggerTests, LogMessage) {
 		ConsoleLogger logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 
 		logger.debug("Output message to VS output window.")
 			.error("This is an error message")
@@ -47,7 +48,7 @@ namespace Logging
 	TEST(ConsoleLoggerTests, LogMessageWithFormatter) {
 		ConsoleLogger logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 
 	}
 
@@ -56,7 +57,7 @@ namespace Logging
 		std::shared_ptr<ILogger> logger = std::make_shared<ConsoleLogger>("test", layouts, LogLevels::Default()->all());
 
 
-		EXPECT_EQ("test", logger->name);
+		EXPECT_EQ("test", logger->getName());
 
 		logger->info("title", "1. this is a test")
 			.info("title", "2. this is a test")

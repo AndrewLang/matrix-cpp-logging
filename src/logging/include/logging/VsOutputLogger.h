@@ -14,7 +14,7 @@ namespace Logging
 		~VsOutputLogger();
 
 	protected:
-		virtual void write(std::string message) override;
+		virtual void write(const std::string message) override;
 	};
 
 }

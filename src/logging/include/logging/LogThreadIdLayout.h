@@ -6,16 +6,17 @@ namespace Logging
 {
 	class LogThreadIdLayout : public LogLayout
 	{
-	public:
-		std::string prefix;
-
+	public:		
 		LogThreadIdLayout(const std::string prefix = "Thread: ");
 		~LogThreadIdLayout();
 
 		virtual std::string layout(const LogMessage& message) override;
 
-	private:
+		std::string getPrefix();
 
+		void setPrefix(const std::string value);
+	private:
+		std::string mPrefix;
 	};
 
 }

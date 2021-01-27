@@ -9,13 +9,6 @@ namespace Logging
 {
 	class LogLevels
 	{
-	private:
-		
-		
-		std::map<std::string, std::shared_ptr<LogLevel>> mLevels;
-
-		
-		void initialize();
 	public:
 		static constexpr const char* All = "All";
 		static constexpr const char* Debug = "Debug";
@@ -29,17 +22,10 @@ namespace Logging
 
 		LogLevels(LogLevels const& instance) = delete;
 
-		LogLevels& operator = (LogLevels  const& instance) = delete;
-		
+		LogLevels& operator = (LogLevels const& instance) = delete;
+
 		~LogLevels();
-
-		static std::shared_ptr<LogLevels> Default()
-		{
-			static std::shared_ptr<LogLevels> instance = std::make_shared<LogLevels>();
-			// (new LogLevels());
-			return instance;
-		}
-
+			
 		std::shared_ptr<LogLevel> all();
 		std::shared_ptr<LogLevel> debug();
 		std::shared_ptr<LogLevel> info();
@@ -49,5 +35,12 @@ namespace Logging
 		std::shared_ptr<LogLevel> none();
 
 		LogLevels& add(const std::string name, const int value);
+
+		static std::shared_ptr<LogLevels> Default();
+
+	private:
+		std::map<std::string, std::shared_ptr<LogLevel>> mLevels;
+
+		void initialize();
 	};
 }

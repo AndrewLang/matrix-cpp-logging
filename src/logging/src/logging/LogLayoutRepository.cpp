@@ -40,14 +40,14 @@ namespace Logging
 
 	LogLayoutRepository& LogLayoutRepository::add(const std::string& name, LogLayoutCreator creator)
 	{
-		creators.insert(std::make_pair(name, creator));
+		mCreators.insert(std::make_pair(name, creator));
 
 		return *this;
 	}
 
 	std::shared_ptr<ILogLayout> LogLayoutRepository::get(const std::string& name)
 	{
-		auto creator = Maps::get<std::string, LogLayoutCreator>(creators, name);
+		auto creator = Maps::get<std::string, LogLayoutCreator>(mCreators, name);
 
 		if (creator != nullptr)
 			return creator();

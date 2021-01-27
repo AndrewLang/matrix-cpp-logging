@@ -27,17 +27,21 @@ namespace Logging
 
 		std::shared_ptr<LogLevel> getMiniLevel();
 
+		std::string getName() override;
+
+		void setName(const std::string value) override;
+
 	protected:
 		std::shared_ptr<LoggerConfig> rawConfig;
-		std::shared_ptr<LogLevel> miniLevel;
-		std::vector<std::shared_ptr<ILogLayout>> layouts;		
-		std::string  layoutFormat;
-		bool enabled = true;
+		std::shared_ptr<LogLevel> mMiniLevel;
+		std::vector<std::shared_ptr<ILogLayout>> mLayouts;		
+		std::string  mLayoutFormat;
+		std::string mName;
+		bool mEnabled = true;
 		
 
 		virtual void write(const std::string message) = 0;
 
 		virtual std::string preWrite(LogMessage& message, const std::string& text);
 	};
-
 }

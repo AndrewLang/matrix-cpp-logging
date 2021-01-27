@@ -22,14 +22,14 @@ namespace Logging
 	{
 		VsOutputLogger logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 	}
 
 	TEST(VsOutputLoggerTests, LogMessages)
 	{
 		VsOutputLogger logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 
 		logger.debug("this is debug")
 			.error("this is error")
@@ -42,7 +42,7 @@ namespace Logging
 	{
 		VsOutputLogger logger = createLogger();
 
-		EXPECT_EQ("test", logger.name);
+		EXPECT_EQ("test", logger.getName());
 
 		logger			
 			.debug("this is debug")
@@ -58,7 +58,7 @@ namespace Logging
 		std::shared_ptr<ILogger> logger = std::make_shared<VsOutputLogger>("test", layouts, LogLevels::Default()->all());
 
 
-		EXPECT_EQ("test", logger->name);
+		EXPECT_EQ("test", logger->getName());
 
 		logger->info("Iron man", "1. this is a test")
 			.info("Spider man", "2. this is a test")

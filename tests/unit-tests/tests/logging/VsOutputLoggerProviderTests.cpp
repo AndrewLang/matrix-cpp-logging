@@ -32,6 +32,6 @@ namespace Logging
 
 		auto logger = provider.createLogger("test");
 
-		EXPECT_EQ("test", logger->name);
+		EXPECT_EQ("test", logger->getName());
 	}
 }

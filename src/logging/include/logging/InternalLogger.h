@@ -30,7 +30,12 @@ namespace Logging
 
 		std::vector<std::shared_ptr<ILogger>> getLoggers();
 
+		std::string getName() override;
+
+		void setName(const std::string value) override;
 	private:
+		std::string mName;
+
 		std::shared_ptr<ILoggerFactory> factory;
 
 		std::vector<std::shared_ptr<ILogger>> loggers;

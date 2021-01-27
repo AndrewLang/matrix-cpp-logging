@@ -10,7 +10,7 @@ namespace Logging
 	}
 
 	LogTextLayout::LogTextLayout(const std::string& text)
-		:content(text)
+		:mContent(text)
 	{
 	}
 
@@ -20,6 +20,6 @@ namespace Logging
 
 	std::string LogTextLayout::layout(const LogMessage & message)
 	{
-		return content;
+		return mContent;
 	}
 }

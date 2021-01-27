@@ -27,10 +27,10 @@ namespace Logging
 	}
 
 	ConsoleLogger::ConsoleLogger(const ConsoleLogger& logger)
-	{
-		name = logger.name;
-		layouts = logger.layouts;
-		miniLevel = logger.miniLevel;
+	{		
+		mName = logger.mName;
+		mLayouts = logger.mLayouts;
+		mMiniLevel = logger.mMiniLevel;
 	}
 
 	ConsoleLogger::~ConsoleLogger()
@@ -64,7 +64,7 @@ namespace Logging
 		cout << message << endl;
 	}
 
-	std::string ConsoleLogger::preWrite(LogMessage & message, const std::string & text)
+	std::string ConsoleLogger::preWrite(LogMessage& message, const std::string& text)
 	{
 		if (loggerConfig && loggerConfig->enableColor)
 		{

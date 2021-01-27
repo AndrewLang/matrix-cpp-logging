@@ -5,7 +5,12 @@ namespace Logging
 {
 	void BaseLoggerProvider::configure(std::shared_ptr<LoggerContext> loggerContext)
 	{
-		context = loggerContext;
+		mContext = loggerContext;
+	}
+
+	std::shared_ptr<LoggerContext> BaseLoggerProvider::getContext()
+	{
+		return mContext;
 	}
 
 	std::shared_ptr<LoggerConfig> BaseLoggerProvider::getConfig(const std::string & type)
@@ -15,11 +20,11 @@ namespace Logging
 		std::string configType = type;
 
 		if (Strings::isNullOrEmpty(type))
-			configType = configurationType;
+			configType = mConfigurationType;
 
 		if (Strings::notNullOrEmpty(configType))
 		{
-			configure = context->configuration->getConfig(configType);
+			configure = mContext->configuration->getConfig(configType);
 		}
 
 		return configure;
@@ -30,8 +35,16 @@ namespace Logging
 		std::vector<std::shared_ptr<ILogLayout>> layouts;
 
 		if (configure != nullptr)
-			layouts = context->layoutRepo->parse(configure->layout);
+			layouts = mContext->layoutRepo->parse(configure->layout);
 
 		return layouts;
+	}
+	std::string BaseLoggerProvider::getConfigurationType()
+	{
+		return mConfigurationType;
+	}
+	void BaseLoggerProvider::setConfigurationType(const std::string value)
+	{
+		mConfigurationType = value;
 	}
 }

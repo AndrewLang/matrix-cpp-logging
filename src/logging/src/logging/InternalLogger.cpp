@@ -6,7 +6,7 @@ namespace Logging
 	InternalLogger::InternalLogger(std::shared_ptr<ILoggerFactory> factory, const std::string& loggerName)
 		: factory(factory)
 	{
-		name = loggerName;
+		mName = loggerName;
 		initialize();
 	}
 	
@@ -29,7 +29,7 @@ namespace Logging
 		
 	void InternalLogger::addProvider(std::shared_ptr<ILoggerProvider> provider)
 	{
-		auto logger = provider->createLogger(name);
+		auto logger = provider->createLogger(mName);
 		loggers.push_back(logger);
 	}
 
@@ -47,12 +47,22 @@ namespace Logging
 		return loggers;
 	}
 
+	std::string InternalLogger::getName()
+	{
+		return mName;
+	}
+
+	void InternalLogger::setName(const std::string value)
+	{
+		mName = value;
+	}
+
 	void InternalLogger::initialize()
 	{
 		auto providers = factory->getProviders();
 		for (auto& provider : providers)
 		{
-			loggers.push_back(provider->createLogger(name));
+			loggers.push_back(provider->createLogger(mName));
 		}
 	}
 

@@ -27,14 +27,14 @@ namespace Logging
 
 	void ConsoleColorRenderer::initialize(std::shared_ptr<ConsoleLoggerConfig> loggerConfig)
 	{
-		config = loggerConfig;
+		mConfig = loggerConfig;
 	}
 
 	std::string ConsoleColorRenderer::render(const std::string& level, const std::string & text)
 	{
-		if (!Maps::contains<string, string>(styles, level))
+		if (!Maps::contains<string, string>(mStyles, level))
 		{
-			auto consoleStyles = config->styles;
+			auto consoleStyles = mConfig->styles;
 			auto config = Vectors::firstOrDefault<ConsoleStyleConfig>(consoleStyles, [=](ConsoleStyleConfig x) {return x.level == level; });
 
 			std::stringstream stream;
@@ -74,10 +74,10 @@ namespace Logging
 
 			stream << StyleEnd;
 
-			styles[level] = stream.str();
+			mStyles[level] = stream.str();
 		}
 
-		string format = Maps::get<string, string>(styles, level);
+		string format = Maps::get<string, string>(mStyles, level);
 
 		std::stringstream stream;
 		stream << format << text << StyleEsc << StyleEnd;
@@ -86,6 +86,6 @@ namespace Logging
 	
 	std::shared_ptr<ConsoleLoggerConfig> ConsoleColorRenderer::getConfig()
 	{
-		return config;
+		return mConfig;
 	}
 }

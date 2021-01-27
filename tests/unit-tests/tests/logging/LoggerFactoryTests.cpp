@@ -59,7 +59,7 @@ namespace Logging
 
 		auto logger = factory->createLogger("test");
 
-		ASSERT_EQ("test", logger->name);
+		ASSERT_EQ("test", logger->getName());
 	}
 
 	TEST(LoggerFactoryTests, CreateLoggersWithReference)
@@ -77,7 +77,7 @@ namespace Logging
 
 				auto logger = factory.createLogger("test");
 
-				ASSERT_EQ("test", logger->name);
+				ASSERT_EQ("test", logger->getName());
 			}
 		);
 
@@ -107,7 +107,7 @@ namespace Logging
 		auto logger = factory->createLogger("jasoom");
 		auto internalLogger = std::static_pointer_cast<InternalLogger>(logger);
 
-		ASSERT_EQ("jasoom", logger->name);
+		ASSERT_EQ("jasoom", logger->getName());
 
 		ASSERT_NE(nullptr, internalLogger);
 		ASSERT_TRUE(internalLogger->isEnabled(LogLevels::Default()->debug()));

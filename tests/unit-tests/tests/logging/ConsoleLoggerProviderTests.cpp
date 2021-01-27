@@ -11,6 +11,7 @@ namespace Logging
 	{
 		ConsoleLoggerProvider provider;
 	}
+
 	TEST(ConsoleLoggerProviderTests, CreateLogger)
 	{
 		auto configuration = std::make_shared<Configuration>();
@@ -32,7 +33,7 @@ namespace Logging
 
 		auto logger = provider.createLogger("test");
 				
-		ASSERT_EQ("test", logger->name);
+		ASSERT_EQ("test", logger->getName());
 	}
 
 	TEST(ConsoleLoggerProviderTests, CreateLoggerWithConfiguration)
@@ -55,7 +56,7 @@ namespace Logging
 		provider.configure(factory->getContext());
 
 		auto logger = provider.createLogger("jasoom");
-		ASSERT_EQ("jasoom", logger->name);
+		ASSERT_EQ("jasoom", logger->getName());
 
 		logger->debug("Hellow Jasoom");
 

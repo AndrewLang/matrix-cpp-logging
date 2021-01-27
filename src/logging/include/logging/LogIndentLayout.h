@@ -11,9 +11,6 @@ namespace Logging
 		~LogIndentLayout();
 
 		virtual std::string layout(const LogMessage& message) override;
-
-	private:
-		static constexpr const char* Indent = "\t";
 	};
 
 }

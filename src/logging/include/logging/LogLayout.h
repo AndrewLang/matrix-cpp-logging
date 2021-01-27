@@ -4,18 +4,20 @@
 
 namespace Logging
 {
-
 	class ILogLayout
-	{
-	private:
-
+	{	
 	public:
+		virtual ~ILogLayout() = default;
+
 		virtual std::string layout(const LogMessage& message) = 0;
+
+	protected:
+		ILogLayout() = default;
 	};
 
 	class LogLayout : public ILogLayout
 	{
 	protected:
-		
+		std::string layout(const LogMessage& message)  override;
 	};
 }

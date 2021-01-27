@@ -6,7 +6,7 @@ namespace Logging
 {
 
 	LogThreadIdLayout::LogThreadIdLayout(const std::string prefix)
-		: prefix(prefix)
+		: mPrefix(prefix)
 	{
 		
 	}
@@ -19,7 +19,17 @@ namespace Logging
 	{
 		auto id = std::this_thread::get_id();
 		std::stringstream stream;
-		stream << prefix << id;
+		stream << mPrefix << id;
 		return stream.str();
+	}
+
+	std::string LogThreadIdLayout::getPrefix()
+	{
+		return mPrefix;
+	}
+
+	void LogThreadIdLayout::setPrefix(const std::string value)
+	{
+		mPrefix = value;
 	}
 }

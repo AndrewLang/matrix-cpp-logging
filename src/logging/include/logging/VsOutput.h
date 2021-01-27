@@ -1,6 +1,7 @@
 #pragma once
 #include "common/TextFormatter.h"
 #include "common/StringExtensions.h"
+#include "common/Consts.h"
 
 #if defined(_WIN32)
 #include <Windows.h>
@@ -26,7 +27,7 @@ namespace Logging
 			TextFormatter formatter;
 			auto message = formatter.format(args...);
 
-			message = StringExtensions::wrapBySquare(StringExtensions::getTimestamp()) + SPACE + message;
+			message = StringExtensions::wrapBySquare(StringExtensions::getTimestamp()) + Consts::Space + message;
 
 			logMessage(message);
 
@@ -37,7 +38,7 @@ namespace Logging
 		{
 			TextFormatter formatter;
 			auto message = formatter.format(args...);
-			message = StringExtensions::wrapBySquare(StringExtensions::getTimestamp()) + SPACE + message + StringExtensions::NewLine;
+			message = StringExtensions::wrapBySquare(StringExtensions::getTimestamp()) + Consts::Space + message + StringExtensions::NewLine;
 
 			logMessage(message);
 		}
@@ -69,14 +70,8 @@ namespace Logging
 
 	private:
 
-		inline static void logMessage(std::string message)
-		{
-			/*
-			Force log message without unicode
-			*/
-
-			//auto lp = StringExtensions::toWString(message).c_str();
-			//OutputDebugString(lp);			
+		inline static void logMessage(const std::string message)
+		{			
 
 #if defined(_WIN32)
 			OutputDebugStringA(message.c_str());

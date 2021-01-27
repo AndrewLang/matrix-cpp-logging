@@ -21,7 +21,7 @@ namespace Logging
 			std::stringstream stream;
 			for (int i = 0; i < indent; i++)
 			{
-				stream << Indent;
+				stream << Consts::Tab;
 			}			
 			return stream.str();
 		}

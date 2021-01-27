@@ -72,11 +72,6 @@ namespace Logging
 		vector<string> delimiters = { "_", "&"  };
 		auto result = StringExtensions::split("ven_8086&dev_15b7&subsys_81c5103c&rev_00", delimiters);
 
-		for (auto item : result)
-		{
-			// VsOutput::debugWithName("Segment:", item);
-		}
-
 		ASSERT_EQ(8, result.size());
 		ASSERT_EQ("ven", result[0]);
 		ASSERT_EQ("8086", result[1]);
@@ -198,7 +193,7 @@ namespace Logging
 	}
 
 	TEST(StringExtensionsTests, PaddingString) {
-		ASSERT_EQ(StringExtensions::paddingString("test").size(), StringExtensions::Padding);
+		ASSERT_EQ(StringExtensions::paddingString("test").size(), Consts::Padding);
 	}
 
 	TEST(StringExtensionsTests, WrapBySquare) {

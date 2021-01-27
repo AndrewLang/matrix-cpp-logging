@@ -18,8 +18,8 @@ namespace Logging
 		std::shared_ptr<ConsoleLoggerConfig> getConfig();
 
 	private:
-		std::shared_ptr<ConsoleLoggerConfig> config;
-		std::map<std::string, std::string> styles;
+		std::shared_ptr<ConsoleLoggerConfig> mConfig;
+		std::map<std::string, std::string> mStyles;
 
 		static constexpr const char* StyleEsc = "\033[";
 		static constexpr const char* StyleEnd = "m";

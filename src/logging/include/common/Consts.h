@@ -3,15 +3,16 @@
 
 namespace Logging
 {
-	struct Consts
+	class Consts
 	{
+	public:
 		static constexpr const int Padding = 25;
 		static constexpr const char PaddingChar = ' ';
 
-		static const std::string NewLine ;
-		static const std::string Tab;
-		static const std::string Space;
-		static const std::string Empty;
+		inline static const std::string NewLine = "\n";
+		inline static const std::string Tab = "\t";
+		inline static const std::string Space = " ";
+		inline static const std::string Empty = "";
 	};
 	
 }
