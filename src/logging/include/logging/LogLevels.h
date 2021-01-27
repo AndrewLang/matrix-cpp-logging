@@ -1,6 +1,8 @@
 #pragma once
 
 #include <map>
+#include <memory>
+
 #include "LogLevel.h"
 
 namespace Logging

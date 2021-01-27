@@ -8,6 +8,7 @@
 namespace Logging
 {
 	using namespace std;
+	using namespace Tests;
 
 	TEST(LogThreadIdLayoutTests, Constructor) {
 		LogThreadIdLayout layout;

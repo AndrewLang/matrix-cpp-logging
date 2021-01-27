@@ -14,6 +14,8 @@ namespace Logging
 	class ILoggerFactory
 	{
 	public:
+        virtual ~ILoggerFactory() = default;
+
 		virtual std::shared_ptr<ILogger> createLogger(const std::string& name) = 0;
 
 		virtual void addProvider(std::shared_ptr<ILoggerProvider> provider) = 0;
@@ -30,5 +32,8 @@ namespace Logging
 			addProvider(std::make_shared<TKey>(args...));
 			return *this;
 		}
+
+    protected:
+        ILoggerFactory() = default;
 	};
 }

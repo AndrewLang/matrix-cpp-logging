@@ -1,12 +1,14 @@
 #pragma once
 #include "logging/LogMessage.h"
 
-
-class Messages
+namespace Tests
 {
-public:
-	static Logging::LogMessage DebugMessage();
+	class Messages
+	{
+	public:
+		static Logging::LogMessage DebugMessage();
 
-private:
+	private:
 
-};
+	};
+}

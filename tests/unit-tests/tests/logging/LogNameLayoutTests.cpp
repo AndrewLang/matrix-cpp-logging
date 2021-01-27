@@ -7,7 +7,7 @@
 
 namespace Logging
 {
-	
+	using namespace Tests;
 	TEST(LogNameLayoutTests, Constructor) {
 		LogNameLayout layout;
 	}

@@ -1,13 +1,17 @@
 #pragma once
 #include "Shape.h"
 #include <vector>
+#include <memory>
 
-class ShapeContainer: public Shape
+namespace Tests
 {
-public:
-    std::vector<std::shared_ptr<Shape>> shapes;
+	class ShapeContainer : public Shape
+	{
+	public:
+		std::vector<std::shared_ptr<Shape>> shapes;
 
-	ShapeContainer();
+		ShapeContainer();
 
-	double area() override;
-};
+		double area() override;
+	};
+}

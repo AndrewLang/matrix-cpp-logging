@@ -6,6 +6,7 @@
 namespace Logging
 {
 	using namespace std;
+	using namespace Tests;
 
 	TEST(VectorExtensionsTests, FirstOrDefault) {
 		vector<int> values = { 1,3,5,7,9 };

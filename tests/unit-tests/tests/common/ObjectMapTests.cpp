@@ -5,6 +5,7 @@
 namespace Logging
 {
 	using std::string;
+	using namespace Tests;
 	TEST(ObjectMapTests, Constructor) {
 
 		ObjectMap<string> map;

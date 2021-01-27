@@ -1,12 +1,15 @@
 
 #include "ShapeContainer.h"
 
-ShapeContainer::ShapeContainer()
+namespace Tests
 {
+	ShapeContainer::ShapeContainer()
+	{
 
-}
+	}
 
-double ShapeContainer::area()
-{
-	return 0;
+	double ShapeContainer::area()
+	{
+		return 0;
+	}
 }

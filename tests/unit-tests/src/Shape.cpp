@@ -1,5 +1,8 @@
 #include "Shape.h"
 
-int Shape::GlobalId = 0;
+namespace Tests
+{
+	int Shape::GlobalId = 0;
 
 
+}

@@ -7,6 +7,7 @@
 
 namespace Logging
 {	
+	using namespace Tests;
 	TEST(LogTimestampLayoutTests, Constructor) {
 		LogTimestampLayout layout;
 	}
