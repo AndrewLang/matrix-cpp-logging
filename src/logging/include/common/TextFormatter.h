@@ -1,27 +1,23 @@
 #pragma once
-#include <string>
+
+#include "Consts.h"
+
 #include <sstream>
 
 
 namespace Logging
-{
-	const static std::string SPACE = " ";
-	const static std::string Empty = "";
-
+{	
 	class TextFormatter
 	{
 	public:
-		static TextFormatter& DefaultTextFormatter();
-
-		TextFormatter(std::string separatorString = SPACE);
 		
-		std::string separator = SPACE;
-
+		TextFormatter(const std::string& separatorString = Consts::Space);
+		
 		template< typename TKey >
 		std::string format(const TKey& text)
 		{
 			std::stringstream stream;
-			stream << text << separator;
+			stream << text << mSeparator;
 			return stream.str();
 		}
 
@@ -31,5 +27,7 @@ namespace Logging
 			return format(first) + format(args...);
 		}
 		
+	private:
+		std::string mSeparator = Consts::Space;
 	};
 }

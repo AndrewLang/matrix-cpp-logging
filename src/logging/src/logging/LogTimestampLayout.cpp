@@ -20,6 +20,6 @@ namespace Logging
 		{
 			return timestamp;
 		}
-		return Strings::Empty;
+		return Consts::Empty;
 	}
 }

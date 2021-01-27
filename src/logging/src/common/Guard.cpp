@@ -8,7 +8,7 @@ namespace Logging
 
 	void Guard::notEmpty(const string & value, const string& name)
 	{
-		if (StringExtensions::isNullOrEmpty(value))
+		if (Strings::isNullOrEmpty(value))
 			throw ArgumentNullException(name);
 	}
 }

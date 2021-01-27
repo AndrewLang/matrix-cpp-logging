@@ -5,9 +5,11 @@ SET(HeaderFiles
     
     include/common/ArgumentNullException.h
 	include/common/BaseException.h
+	include/common/Consts.h
 	include/common/FileLoadException.h
 	include/common/FileNotExistsException.h
 	include/common/Guard.h
+	include/common/Initializer.h
 	include/common/MapValueDescriptor.h
 	include/common/MapExtensions.h
 	include/common/ObjectMap.h
@@ -16,6 +18,7 @@ SET(HeaderFiles
 	include/common/StringExtensions.h	
 	include/common/TextFormatter.h
 	include/common/VectorExtensions.h
+	
 
 	include/logging/BaseLoggerProvider.h
 	include/logging/ConsoleLogger.h
@@ -62,6 +65,8 @@ SET(SourceFiles
 	src/common/Stopwatch.cpp
 	src/common/StringExtensions.cpp
 	src/common/TextFormatter.cpp
+	src/common/VectorExtensions.cpp
+	src/common/Consts.cpp
 
 	src/logging/BaseLoggerProvider.cpp
 	src/logging/ConsoleLogger.cpp

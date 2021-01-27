@@ -17,6 +17,6 @@ namespace Logging
 
 	std::string LogProcessIdLayout::layout(const LogMessage & message)
 	{
-		return Strings::Empty;
+		return Consts::Empty;
 	}
 }

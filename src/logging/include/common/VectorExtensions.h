@@ -1,4 +1,5 @@
 #pragma once
+#include "Initializer.h"
 
 #include <vector>
 #include <algorithm>
@@ -16,22 +17,24 @@ namespace Logging
 	template<typename T>
 	using ActionT = std::function<void(T)>;
 
+	
+
 	class VectorExtensions
 	{
 	public:
 		template<typename T>
 		static T firstOrDefault(std::vector<T> items, Predicate<T> predicate)
 		{
-			T result;
+			Initializer<T> result;
 			for (auto & item : items)
 			{
 				if (predicate(item))
 				{
-					result = item;
+					result.t = item;
 					break;
 				}
 			}
-			return result;
+			return result.t;
 		}
 
 		template<typename T>

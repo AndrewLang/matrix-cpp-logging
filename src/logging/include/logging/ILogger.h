@@ -1,6 +1,7 @@
 #pragma once
 #include "common/TextFormatter.h"
 #include "common/StringExtensions.h"
+#include "common/Consts.h"
 #include "LogLevel.h"
 #include "LogMessage.h"
 
@@ -15,6 +16,8 @@ namespace Logging
 	{
 	public:
 		std::string name;
+
+		virtual ~ILogger() = default;
 
 		virtual bool isEnabled(std::shared_ptr<LogLevel> level) = 0;
 
@@ -66,7 +69,7 @@ namespace Logging
 		std::string format(const TKey& text)
 		{
 			std::stringstream stream;
-			stream << text << SPACE;
+			stream << text << Consts::Space;
 			return stream.str();
 		}
 
@@ -83,7 +86,7 @@ namespace Logging
 		}
 
 	protected:
-		
+		ILogger() = default;
 
 	};
 }

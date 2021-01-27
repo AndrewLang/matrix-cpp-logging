@@ -2,14 +2,9 @@
 
 namespace Logging
 {
-	TextFormatter & TextFormatter::DefaultTextFormatter()
-	{
-		static TextFormatter formatter;
-		return formatter;
-	}
-
-	TextFormatter::TextFormatter(std::string separatorString)
-		:separator(separatorString)
+	
+	TextFormatter::TextFormatter(const std::string& separatorString)
+		:mSeparator(separatorString)
 	{
 	}
 }

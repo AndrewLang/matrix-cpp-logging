@@ -15,6 +15,6 @@ namespace Logging
 
 	std::string LogNoneLayout::layout(const LogMessage & message)
 	{
-		return Strings::Empty;
+		return Consts::Empty;
 	}
 }

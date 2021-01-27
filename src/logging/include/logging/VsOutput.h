@@ -48,7 +48,7 @@ namespace Logging
 		{
 			TextFormatter formatter;
 			auto message = formatter.format(args...);
-			message = message + StringExtensions::NewLine;
+			message = message + Consts::NewLine;
 
 			logMessage(message);
 		}

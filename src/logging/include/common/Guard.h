@@ -14,8 +14,7 @@ namespace Logging
 
 	template<typename TKey>
 	inline void Guard::notNull(TKey arg, const std::string& name)
-	{		
-		//if (std::is_null_pointer<decltype(arg)>::value)
+	{	
 		if(arg == NULL)
 			throw ArgumentNullException(name);
 	}

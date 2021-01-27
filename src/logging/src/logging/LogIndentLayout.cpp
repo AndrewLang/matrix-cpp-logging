@@ -25,6 +25,6 @@ namespace Logging
 			}			
 			return stream.str();
 		}
-		return Strings::Empty;
+		return Consts::Empty;
 	}
 }
